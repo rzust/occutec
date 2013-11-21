@@ -18,7 +18,19 @@
     = csrf_meta_tags
 
   %body
+    .top
+      .container
 
-    = yield 
+    .header
+      .navbar.navbar-default{:role => 'navigation'}
+    
+    .container
+      = yield 
+    
+    .footer
+      .container
+    
+    .copyright
+      .container
 
 
