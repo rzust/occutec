@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-migrate-1.2.1.min
+//= require bootstrap/js/bootstrap.min
+//= require hover-dropdown.min
+//= require back-to-top
+//= require flexslider/jquery.flexslider-min
+//= require parallax-slider/js/modernizr
+//= require parallax-slider/js/jquery.cslider
+//= require app
+//= require pages/index
 //= require turbolinks
-//= require_tree .
+//= #require_tree .
+
