@@ -20,7 +20,9 @@
 //= require parallax-slider/js/modernizr
 //= require parallax-slider/js/jquery.cslider
 //= require app
+//= require gmap/gmap
 //= require pages/index
+//= require pages/contact
 //= require turbolinks
 //= #require_tree .
 

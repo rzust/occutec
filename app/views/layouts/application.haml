@@ -7,216 +7,112 @@
   [if !IE]><!--> <html lang="en"> <!--<![endif]
 %html
   %head
-    %title Unify | Welcome...
+    %title Ocutec
 
     %meta{:charset => "utf-8"} 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"} 
     %meta{:content => "", :name => "description"} 
-    %meta{:content => "", :name => "author"} 
+    %meta{:content => "", :name => "author"}
+    = favicon_link_tag 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     %script
       var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
+    = javascript_include_tag "https://maps.google.com/maps/api/js?sensor=true"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
   %body
-    .top
-      .container
-        %ul.loginbar.pull-right
-          %li
-            %i.icon-globe
-            %a Languages
-            %ul.lenguages
-              %li.active
-                %a{href: "#"}
-                  English 
-                  %i.icon-ok
-              %li
-                %a{href: "#"}
-                  Spanish
-              %li
-                %a{href: "#"}
-                  Russian
-              %li
-                %a{href: "#"}
-                  German
-            %li.devider
-            %li
-              %a{href: "page_faq.html"}
-                Help
-            %li.devider 
-            %li
-              %a{href: "page_login.html"}
-                Login
-
-    .header
-      .navbar.navbar-default{:role => 'navigation'}
+    = #image_tag "bg.jpg", class: 'overlay-image'
+    .overlay
+      .top
         .container
-          .navbar-header
-            %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
-              %span.sr-only
-                Toggle navigation
-              %span.icon-bar                      
-              %span.icon-bar                      
-              %span.icon-bar                                    
-            %a.navbar-brand{href: "index.html"}
-              =image_tag("logo1-default.png", id: "logo-header", alt: "Logo")
-          .collapse.navbar-collapse.navbar-responsive-collapse
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown.active
-                %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
-                  Home
-                  %i.icon-angle-down
-                %ul.dropdown-menu
-                  %li.active
-                    %a{href: "index.html"}
-                      Option 1: Default Page
-                  %li
-                    %a{href: "page_home1.html"}
-                      Option 2: Layer Slider
-                  %li
-                    %a{href: "page_home2.html"}
-                      Option 3: Revolution Slider
-                  %li
-                    %a{href: "page_home3.html"}
-                      Option 4: Amazing Content
-                  %li
-                    %a{href: "page_home4.html"}
-                      Option 5: Home Sidebar
-                  %li
-                    %a{href: "page_home5.html"}
-                      Option 6: Home Flatty
-                  %li
-                    %a{href: "page_home6.html"}
-                      Option 7: Home Magazine
-                  %li
-                    %a{href: "page_home7.html"}
-                      Option 8: Home Portfolio
-                  
-              %li.dropdown
-                %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "data-close-others" => "false"}}
-                  Pages
-                  %i.icon-angle-down  
-                %ul.dropdown-menu
-                  %li
-                    %a{href: "page_about.html"}
-                      About Us
-                  %li
-                    %a{href: "page_about1.html"}
-                      About Us Option
-                  %li
-                    %a{href: "page_services.html"}
-                      Services
+          %ul.loginbar.pull-right
+            %li
+              %i.icon-globe
+              %a Languages
+              %ul.lenguages
+                %li.active
+                  %a{href: "#"}
+                    English 
+                    %i.icon-ok
+                %li
+                  %a{href: "#"}
+                    Spanish
+                %li
+                  %a{href: "#"}
+                    Russian
+                %li
+                  %a{href: "#"}
+                    German
+              %li.devider
+              %li
+                %a{href: "page_faq.html"}
+                  Help
+              %li.devider 
+              %li
+                %a{href: "page_login.html"}
+                  Login
 
-    
-    
-    .container
+      .header
+        .navbar.navbar-default{:role => 'navigation'}
+          .container
+            .navbar-header
+              %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+                %span.sr-only
+                  Toggle navigation
+                %span.icon-bar                      
+                %span.icon-bar                      
+                %span.icon-bar                                    
+              %a.navbar-brand{href: "index.html"}
+                =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
+            .collapse.navbar-collapse.navbar-responsive-collapse
+              %ul.nav.navbar-nav.navbar-right
+                %li.dropdown.active
+                  %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
+                    Linea de Productos
+                    %i.icon-angle-down
+                  %ul.dropdown-menu
+                    %li.active
+                      %a{href: "#"}
+                        Tipo de Lentes
+                    %li
+                      %a{href: "#"}
+                        Materiales
+                    %li
+                      %a{href: "#"}
+                        Tratamientos                  
+                %li
+                  %a{href: services_path, data: {"data-close-others" => "false"}}
+                    Servicios                  
+                %li
+                  %a{href: about_us_path, data: {"data-close-others" => "false"}}
+                    Acerca de la Empresa                  
+                %li
+                  %a{href: promotions_path, data: {"data-close-others" => "false"}}
+                    Promociones                  
+                %li
+                  %a{href: seminars_path, data: {"data-close-others" => "false"}}
+                    Seminarios                  
+                %li
+                  %a{href: magazine_path, data: {"data-close-others" => "false"}}
+                    Revista Online                  
+                %li
+                  %a{href: contact_us_path, data: {"data-close-others" => "false"}}
+                    Contáctenos
+
       = yield 
-    
-    .footer
-      .container
-        .row
-          .col-md-4.md-margin-bottom-40
-            .headline
-              %h2
-                About
-            %p.margin-bottom-25.md-margin-bottom-40
-              Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.
-            .headline
-              %h2
-                Monthly Newsletter 
-            %p
-              Subscribe to our newsletter and stay up to date with the latest news and deals!
-            %form.footer-subsribe
-              .input-group
-                %input.form-control{type: "text", placeholder: "Email Address"}
-                %span.input-group-btn
-                  %button.btn-u{type: "button"}
-                    Subscribe                   
-          .col-md-4.md-margin-bottom-40
-            .posts
-              .headline
-                %h2
-                  Recent Blog Entries
-              %dl.dl-horizontal
-                %dt
-                  %a{href: "#"}
-                    = image_tag("sliders/elastislide/6.jpg", alt: "")
-                %dd
-                  %p
-                    %a{href: "#"}
-                      Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template
-              %dl.dl-horizontal
-                %dt
-                  %a{href: "#"}
-                    = image_tag("sliders/elastislide/10.jpg", alt: "")
-                %dd
-                  %p
-                    %a{href: "#"}
-                      Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template
-              %dl.dl-horizontal
-                %dt
-                  %a{href: "#"}
-                    = image_tag("sliders/elastislide/11.jpg", alt: "")
-                %dd
-                  %p
-                    %a{href: "#"}
-                      Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template
-          .col-md-4
-            .headline
-              %h2
-                Contact Us
-            %address.md-margin-bottom-40
-              25, Lorem Lis Street, Orange 
-              %br
-              California, US 
-              %br
-              Phone: 800 123 3456 
-              %br
-              Fax: 800 123 3456 
-              %br
-              Email: 
-              %a{href: "mailto:info@anybiz.com"}
-                info@anybiz.com
-            .headline
-              %h2
-                Stay Connected
-            %ul.social-icons
-              %li
-                %a.social_rss{href: "#", data: {"original-title" => "Feed"}} 
-              %li
-                %a.social_facebook{href: "#", data: {"original-title" => "Facebook"}} 
-              %li
-                %a.social_twitter{href: "#", data: {"original-title" => "Twitter"}} 
-              %li
-                %a.social_googleplus{href: "#", data: {"original-title" => "Goole Plus"}} 
-              %li
-                %a.social_pintrest{href: "#", data: {"original-title" => "Pinterest"}} 
-              %li
-                %a.social_linkedin{href: "#", data: {"original-title" => "Linkedin"}} 
-              %li
-                %a.social_vimeo{href: "#", data: {"original-title" => "Vimeo"}} 
+      
+      .footer
+        = render "shared/footer"
 
-
-    .copyright
-      .container
-        .row
-          .col-md-6
-            %p.copyright-space
-              2013 &copy; Unify. ALL Rights Reserved. 
-              %a{href: "#"}
-                Privacy Policy | 
-              %a{href: "#"}
-                Terms of Service
-          .col-md-6
-            %a{href: "index.html"}
-              = image_tag("VRAI_gray_small.png", id: "logo-footer", :class => "pull-right", alt: "")
-
+      .copyright
+        = render "shared/copyright"
 :javascript
   jQuery(document).ready(function() {
     App.init();
     App.initSliders();
     Index.initParallaxSlider();
+    Contact.initMap(); 
   });
 
 

@@ -17,7 +17,7 @@
  *= require parallax-slider/css/parallax-slider
  *= require themes/blue
  *= require themes/headers/header1-blue
-
+ *= require override
 
  *= #require_tree .
  */
