@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bienvenido a Ocutec <%= @user.first_name %> <%= @user.last_name %>,</h1>
+    <p>
+      Se ha registrado satisfactoriamente, sus accesos son:<br/>
+      <%= @user.email %><br/>
+      <%= @pass %><br/>
+    </p>
+    <p>
+      Para iniciar sesión ingrese a través de este link: <%= @url %>.
+    </p>
+    <p>Se recomienda cambiar la contraseña autogenerada.</p><br/>
+    <p>Que tenga un buen día!</p>
+  </body>
+</html>

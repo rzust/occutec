@@ -21,7 +21,7 @@ gem 'jquery-rails'
 gem "therubyracer", platforms: :ruby
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass-rails", "~> 1.1.2"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

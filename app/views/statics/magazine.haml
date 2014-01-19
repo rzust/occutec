@@ -1,0 +1,24 @@
+.row
+  .col-sm-12
+    .cycle-slideshow.magazine{"data-cycle-fx" => "scrollHorz", "data-cycle-timeout" => "0","data-cycle-slides" => "> div","data-cycle-next" => "#next", "data-cycle-prev" => "#prev"}
+      - @documents.each do |x|
+        %div
+          %h2= x[0]
+          .issuuembed{"data-configid" => "#{x[2]}", :style => "width: 525px; height: 371px;"}
+          %script{type: "text/javascript", src: "http://e.issuu.com/embed.js", async: "true"}
+
+
+    .center
+      %a{href: "#"}
+        %span.glyphicon.glyphicon-step-backward
+        %span#prev
+          Anterior
+      %a{href: "#"}
+        %span#next
+          Siguiente
+        %span.glyphicon.glyphicon-step-forward
+        
+
+
+
+

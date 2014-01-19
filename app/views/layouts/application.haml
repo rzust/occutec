@@ -21,37 +21,16 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-  %body
+  %body.boxed-layout.container
     = #image_tag "bg.jpg", class: 'overlay-image'
     .overlay
       .top
         .container
           %ul.loginbar.pull-right
-            %li
-              %i.icon-globe
-              %a Languages
-              %ul.lenguages
-                %li.active
-                  %a{href: "#"}
-                    English 
-                    %i.icon-ok
-                %li
-                  %a{href: "#"}
-                    Spanish
-                %li
-                  %a{href: "#"}
-                    Russian
-                %li
-                  %a{href: "#"}
-                    German
-              %li.devider
+            %li            
               %li
-                %a{href: "page_faq.html"}
-                  Help
-              %li.devider 
-              %li
-                %a{href: "page_login.html"}
-                  Login
+                = current_user ? (link_to "Login", new_user_session_path) : (link_to "Salir", destroy_user_session_path)
+                  
 
       .header
         .navbar.navbar-default{:role => 'navigation'}
@@ -63,7 +42,7 @@
                 %span.icon-bar                      
                 %span.icon-bar                      
                 %span.icon-bar                                    
-              %a.navbar-brand{href: "index.html"}
+              %a.navbar-brand{href: root_path}
                 =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
             .collapse.navbar-collapse.navbar-responsive-collapse
               %ul.nav.navbar-nav.navbar-right
@@ -74,13 +53,20 @@
                   %ul.dropdown-menu
                     %li.active
                       %a{href: "#"}
-                        Tipo de Lentes
+                        Tecnología Digital
                     %li
                       %a{href: "#"}
-                        Materiales
+                        Tratamientos
                     %li
                       %a{href: "#"}
-                        Tratamientos                  
+                        Tallado Convencional
+                    %li
+                      %a{href: "#"}
+                        Materiales 
+                    %li
+                      %a{href: "#"}
+                        Tipos de Lentes 
+                
                 %li
                   %a{href: services_path, data: {"data-close-others" => "false"}}
                     Servicios                  

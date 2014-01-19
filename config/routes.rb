@@ -1,5 +1,6 @@
 Ocutec::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "admin/sessions" }
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,6 +17,13 @@ Ocutec::Application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
+
+    resources :users do
+      collection do
+        get 'administrators'
+        get 'customers'
+      end
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

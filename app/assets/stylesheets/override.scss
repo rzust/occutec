@@ -84,8 +84,41 @@
 
 
 
+.magazine{
+  width: 45%;
+  min-width: 403px;
+  max-width: 525px;
+  margin: 10px auto;
+  padding: 0;
+  position: relative;
+  background: url(http://malsup.github.com/images/spinner.gif) 50% 50% no-repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 403px;
+  width: 525px;
+  h2{
+    text-align: center;
+  }
+}
 
+div.cycle-slide.cycle-sentinel{
+  display: block;
+  position: static;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  opacity: 1;
+  visibility: hidden;
+}
 
+.center{
+  text-align: center;
+}
+
+.issuuembed.issuu-isrendered div div:last-child{
+  display: none;
+}
 
 
 

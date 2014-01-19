@@ -19,6 +19,7 @@
 //= require flexslider/jquery.flexslider-min
 //= require parallax-slider/js/modernizr
 //= require parallax-slider/js/jquery.cslider
+//= require jquery.cycle2
 //= require app
 //= require gmap/gmap
 //= require pages/index
