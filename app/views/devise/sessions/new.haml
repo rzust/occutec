@@ -1,0 +1,24 @@
+%h2
+  Iniciar Sesión
+
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "validate-form"}) do |f| 
+  .form-group
+    .controls.with-icon-over-input
+      = f.email_field :email, autofocus: true, placeholder: "E-mail", class: "form-control", "data-rule-required" => "true"
+      %i.icon-user.text-muted
+  .form-group
+    .controls.with-icon-over-input
+      = f.password_field :password, placeholder: "Contraseña", class: "form-control", "data-rule-required" => "true" 
+      %i.icon-lock.text-muted
+
+  - if devise_mapping.rememberable? 
+    .checkbox
+      = f.check_box :remember_me
+      = f.label :Recordarme
+
+  %div
+    = f.submit "Ingresar", :class => 'btn btn-block'
+
+
+= render "devise/shared/links" 
+

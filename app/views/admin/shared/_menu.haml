@@ -1,0 +1,147 @@
+#main-nav-bg
+%nav#main-nav
+  .navigation 
+    %ul.nav.nav-stacked
+      %li.active
+        %a{href: admin_dashboard_path}
+          %i.icon-dashboard
+          %span
+            Dashboard
+      %li
+        %a{class: "dropdown-collapse", href: "#"}
+          %i.icon-group
+          %span
+            Usuarios
+          %i.icon-angle-down.angle-down            
+        %ul.nav.nav-stacked
+          %li
+            %a{href: administrators_admin_users_path}
+              %i.icon-caret-right
+              %span
+                Administradores
+          %li
+            %a{href: customers_admin_users_path}
+              %i.icon-caret-right
+              %span
+                Usuarios
+          %li
+            %a{href: 'validations.html'}
+              %i.icon-caret-right
+              %span
+                Solicitudes
+            
+      %li
+        %a{class: "dropdown-collapse", href: "#"}
+          %i.icon-group
+          %span
+            Ordenes
+          %i.icon-angle-down.angle-down            
+        %ul.nav.nav-stacked
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Nuevas
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Pendientes
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Completas
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Todas
+     
+      %li
+        %a{class: "dropdown-collapse", href: "#"}
+          %i.icon-group
+          %span
+            Contenido
+          %i.icon-angle-down.angle-down            
+        %ul.nav.nav-stacked
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Inicio
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Servicios
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Acerca de la Empresa
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Promociones 
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Seminarios 
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Revista Online 
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Contáctenos  
+          %li
+            %a{href: "#"}
+              %i.icon-caret-right
+              %span
+                Línea de Productos    
+
+      %li
+        %a{href: 'buttons_and_icons.html'}
+          %i.icon-star
+          %span
+            Ordenes
+      
+      %li
+        %a{class: 'dropdown-collapse', href: '#'}
+          %i.icon-folder-open-alt
+          %span
+            Four level dropdown
+          %i.icon-angle-down.angle-down
+        
+        %ul.nav.nav-stacked
+          %li
+            %a{class: 'dropdown-collapse', href: '#'}
+              %i.icon-caret-right
+              %span
+                Second level
+              %i.icon-angle-down.angle-down
+            
+            %ul.nav.nav-stacked
+              %li
+                %a{class: 'dropdown-collapse', href: '#'}
+                  %i.icon-caret-right
+                  %span
+                    Third level                          
+                  %i.icon-angle-down.angle-down
+                %ul.nav.nav-stacked
+                  %li>
+                    %a{href: '#'}
+                      %i.icon-caret-right
+                      %span
+                        Fourth level                          
+                  %li
+                    %a{ href: '#'}
+                      %i.icon-caret-right
+                      %span
+                        Another fourth level

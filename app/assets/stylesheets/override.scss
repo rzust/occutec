@@ -1,0 +1,126 @@
+.header .navbar-default .navbar-nav > li > a{
+  text-transform: none;
+  color: #94A7AC;
+  font-size: 15px;
+  font-weight: 200;
+  // color: #ffffff;
+}
+
+// .background{
+//   background-attachment: fixed;
+//   background: transparent image-url("bg.jpg");
+// }
+
+// .overlay{
+//   opacity: 0.9;
+//   z-index: -1;
+//   background: transparent image-url("dot.png");
+//   background-attachment: fixed;
+// }
+
+// .overlay-image{
+//   position: fixed;
+//   image-rendering: optimizeQuality;
+//   -ms-interpolation-mode: bicubic;
+//   z-index: -2;
+//   max-width: none !important;
+//   width: 100%;
+//   height: 120%;
+//   top: -20px;
+// }
+
+.footer{
+  background: #3A3A3A image-url("dot.png");
+  background-attachment: fixed;
+  p{
+    font-size: 12px;
+  }
+}
+
+.posts .dl-horizontal dd a{
+  font-size: 12px;
+}
+
+
+#logo-header{
+  height: 95px;
+}
+
+.headline {
+  border-bottom: 1px solid #e4e9f0;
+}
+
+.canvas{
+  min-height: 500px;
+}
+
+.copyright{
+  background: #2480AD;
+}
+
+.metro{
+  margin: 5px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  border: 1px #c7c7c7 solid;
+  height: 250px;
+  color: #94A7AC;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.metro_title{
+  margin: 5px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  background: #413838;
+  height: 250px;
+  font-size: 50px;
+  font-weight: 200;
+  color: #cacaca;
+  text-align: center;
+  position: relative;
+}
+
+
+
+.magazine{
+  width: 45%;
+  min-width: 403px;
+  max-width: 525px;
+  margin: 10px auto;
+  padding: 0;
+  position: relative;
+  background: url(http://malsup.github.com/images/spinner.gif) 50% 50% no-repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 403px;
+  width: 525px;
+  h2{
+    text-align: center;
+  }
+}
+
+div.cycle-slide.cycle-sentinel{
+  display: block;
+  position: static;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  opacity: 1;
+  visibility: hidden;
+}
+
+.center{
+  text-align: center;
+}
+
+.issuuembed.issuu-isrendered div div:last-child{
+  display: none;
+}
+
+
+
+
+

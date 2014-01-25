@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Occutec::Application.load_tasks
+Ocutec::Application.load_tasks

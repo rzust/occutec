@@ -7,51 +7,30 @@
   [if !IE]><!--> <html lang="en"> <!--<![endif]
 %html
   %head
+<<<<<<< HEAD
     %title Ocutec 
+=======
+    %title Ocutec
+>>>>>>> d41164ea8e1274b1d9eeb604047fd3c418778d7c
 
     %meta{:charset => "utf-8"} 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"} 
     %meta{:content => "", :name => "description"} 
-    %meta{:content => "", :name => "author"} 
+    %meta{:content => "", :name => "author"}
+    = favicon_link_tag 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     %script
       var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
+    = javascript_include_tag "https://maps.google.com/maps/api/js?sensor=true"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-  %body
-    .top
-      .container
-        %ul.loginbar.pull-right
-          %li
-            %i.icon-globe
-            %a Languages
-            %ul.lenguages
-              %li.active
-                %a{href: "#"}
-                  English 
-                  %i.icon-ok
-              %li
-                %a{href: "#"}
-                  Spanish
-              %li
-                %a{href: "#"}
-                  Russian
-              %li
-                %a{href: "#"}
-                  German
-            %li.devider
-            %li
-              %a{href: "page_faq.html"}
-                Help
-            %li.devider 
-            %li
-              %a{href: "page_login.html"}
-                Login
-
-    .header
-      .navbar.navbar-default{:role => 'navigation'}
+  %body.boxed-layout.container
+    = #image_tag "bg.jpg", class: 'overlay-image'
+    .overlay
+      .top
         .container
+<<<<<<< HEAD
           .navbar-header
             %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
               %span.sr-only
@@ -184,20 +163,69 @@
             %ul.social-icons
               %li
                 %a.social_rss{href: "#", data: {"original-title" => "Feed"}} 
+=======
+          %ul.loginbar.pull-right
+            %li            
+>>>>>>> d41164ea8e1274b1d9eeb604047fd3c418778d7c
               %li
-                %a.social_facebook{href: "#", data: {"original-title" => "Facebook"}} 
-              %li
-                %a.social_twitter{href: "#", data: {"original-title" => "Twitter"}} 
-              %li
-                %a.social_googleplus{href: "#", data: {"original-title" => "Goole Plus"}} 
-              %li
-                %a.social_pintrest{href: "#", data: {"original-title" => "Pinterest"}} 
-              %li
-                %a.social_linkedin{href: "#", data: {"original-title" => "Linkedin"}} 
-              %li
-                %a.social_vimeo{href: "#", data: {"original-title" => "Vimeo"}} 
+                = current_user ? (link_to "Login", new_user_session_path) : (link_to "Salir", destroy_user_session_path)
+                  
 
+      .header
+        .navbar.navbar-default{:role => 'navigation'}
+          .container
+            .navbar-header
+              %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+                %span.sr-only
+                  Toggle navigation
+                %span.icon-bar                      
+                %span.icon-bar                      
+                %span.icon-bar                                    
+              %a.navbar-brand{href: root_path}
+                =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
+            .collapse.navbar-collapse.navbar-responsive-collapse
+              %ul.nav.navbar-nav.navbar-right
+                %li.dropdown.active
+                  %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
+                    Linea de Productos
+                    %i.icon-angle-down
+                  %ul.dropdown-menu
+                    %li.active
+                      %a{href: "#"}
+                        Tecnología Digital
+                    %li
+                      %a{href: "#"}
+                        Tratamientos
+                    %li
+                      %a{href: "#"}
+                        Tallado Convencional
+                    %li
+                      %a{href: "#"}
+                        Materiales 
+                    %li
+                      %a{href: "#"}
+                        Tipos de Lentes 
+                
+                %li
+                  %a{href: services_path, data: {"data-close-others" => "false"}}
+                    Servicios                  
+                %li
+                  %a{href: about_us_path, data: {"data-close-others" => "false"}}
+                    Acerca de la Empresa                  
+                %li
+                  %a{href: promotions_path, data: {"data-close-others" => "false"}}
+                    Promociones                  
+                %li
+                  %a{href: seminars_path, data: {"data-close-others" => "false"}}
+                    Seminarios                  
+                %li
+                  %a{href: magazine_path, data: {"data-close-others" => "false"}}
+                    Revista Online                  
+                %li
+                  %a{href: contact_us_path, data: {"data-close-others" => "false"}}
+                    Contáctenos
 
+<<<<<<< HEAD
     .copyright
       .container
         .row
@@ -211,12 +239,21 @@
           .col-md-6
             %a{href: "index.html"}
               = image_tag("VRAI_gray_small.png", id: "logo-footer", :class => "pull-right", alt: "")
+=======
+      = yield 
+      
+      .footer
+        = render "shared/footer"
+>>>>>>> d41164ea8e1274b1d9eeb604047fd3c418778d7c
 
+      .copyright
+        = render "shared/copyright"
 :javascript
   jQuery(document).ready(function() {
     App.init();
     App.initSliders();
     Index.initParallaxSlider();
+    Contact.initMap(); 
   });
 
 

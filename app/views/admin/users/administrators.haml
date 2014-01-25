@@ -1,0 +1,48 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-group
+        %span
+          Administradores
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+              
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Administradores
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Administradores
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped{style: 'margin-bottom:0;'}
+              %thead  
+                %tr
+                  %th
+                    Nombre
+                  %th
+                    Apellido
+                  %th
+                    E-mail
+                  %th
+                    Teléfono
+              %tbody
+                - administrators.each do |x|
+                  %tr
+                    %td= x.first_name
+                    %td= x.last_name
+                    %td= x.email
+                    %td= x.phone
+
+.row
+  .col-sm-12
+    = link_to "Crear", new_admin_user_path, :class => "btn btn-success"

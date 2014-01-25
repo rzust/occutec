@@ -1,0 +1,52 @@
+!!! 5
+/[if IE 8]
+  %html{lang: "en", :class => "ie8"} 
+/[if IE 9]
+  %html{lang: "en", :class => "ie9"}
+/[if !IE]
+  %html{lang: "en"} 
+%html
+  %head
+    %title Admin Ocutec
+    %meta{content: 'width=device-width', 'initial-scale' => 1, 'maximum-scale' => 1, 'user-scalable' => 'no', name: 'viewport'}
+    %meta{content: 'text/html;charset=utf-8', 'http-equiv' => 'content-type'}
+    = favicon_link_tag
+    = stylesheet_link_tag    "admin/application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "admin/application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+    /[if lt IE 9]
+      = javascript_include_tag "admin/ie/html5shiv.js", "data-turbolinks-track" => true
+      = javascript_include_tag "admin/ie/respond.min.js", "data-turbolinks-track" => true
+    %body.contrast-sea-blue
+      = render 'admin/shared/header'
+
+      #wrapper
+        - if current_user.is_admin
+          = render 'admin/shared/menu'
+        -else
+          = render 'admin/shared/customer_menu'
+        %section#content
+          .container
+            .row#content-wrapper
+              .col-sm-12
+                = yield
+            %footer#footer
+              .footer-wrapper
+                .row
+                  .col-sm-6.text
+                    Copyright © 2014 Ocutec
+                  .col-sm-6.buttons
+             
+
+
+
+
+
+
+
+
+
+
+
+       

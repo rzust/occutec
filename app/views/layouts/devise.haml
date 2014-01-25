@@ -1,0 +1,45 @@
+!!! 5
+/[if IE 8]
+  %html{lang: "en", :class => "ie8"} 
+/[if IE 9]
+  %html{lang: "en", :class => "ie9"}
+/[if !IE]
+  %html{lang: "en"} 
+%html
+  %head
+    %title Admin Ocutec
+  
+    %meta{content: 'width=device-width', 'initial-scale' => 1, 'maximum-scale' => 1, 'user-scalable' => 'no', name: 'viewport'}
+    %meta{content: 'text/html;charset=utf-8', 'http-equiv' => 'content-type'}
+    = favicon_link_tag
+    = stylesheet_link_tag    "admin/application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "admin/application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+    /[if lt IE 9]
+      = javascript_include_tag "admin/ie/html5shiv.js", "data-turbolinks-track" => true
+      = javascript_include_tag "admin/ie/respond.min.js", "data-turbolinks-track" => true
+
+    %body.contrast-red.login.contrast-background.contrast-sea-blue
+      .middle-container
+        .middle-row
+          .middle-wrapper
+            .login-container-header
+              .container
+                .row
+                  .col-sm-12
+                    .text-center
+                      = image_tag("ocutec.jpg")
+
+            .login-container
+              .container
+                .row
+                  .col-sm-4.col-sm-offset-4
+                    = yield
+       
+            .login-container-footer
+              .container
+                .row
+                  .col-sm-12
+
+                    
