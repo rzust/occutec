@@ -7,11 +7,9 @@
   [if !IE]><!--> <html lang="en"> <!--<![endif]
 %html
   %head
-<<<<<<< HEAD
+
     %title Ocutec 
-=======
-    %title Ocutec
->>>>>>> d41164ea8e1274b1d9eeb604047fd3c418778d7c
+
 
     %meta{:charset => "utf-8"} 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"} 
@@ -30,7 +28,6 @@
     .overlay
       .top
         .container
-<<<<<<< HEAD
           .navbar-header
             %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
               %span.sr-only
@@ -163,10 +160,10 @@
             %ul.social-icons
               %li
                 %a.social_rss{href: "#", data: {"original-title" => "Feed"}} 
-=======
+
           %ul.loginbar.pull-right
             %li            
->>>>>>> d41164ea8e1274b1d9eeb604047fd3c418778d7c
+
               %li
                 = current_user ? (link_to "Login", new_user_session_path) : (link_to "Salir", destroy_user_session_path)
                   
@@ -225,11 +222,6 @@
                   %a{href: contact_us_path, data: {"data-close-others" => "false"}}
                     Contáctenos
 
-
-      = yield 
-      
-      .footer
-        = render "shared/footer"
 
 
       .copyright
