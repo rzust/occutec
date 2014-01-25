@@ -7,7 +7,9 @@
   [if !IE]><!--> <html lang="en"> <!--<![endif]
 %html
   %head
-    %title Ocutec
+
+    %title Ocutec 
+
 
     %meta{:charset => "utf-8"} 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"} 
@@ -21,65 +23,72 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-  %body
 
-  .top
-    .container
-      %ul.loginbar.pull-right
-        %li            
-          %li
-            = current_user ? (link_to "Login", new_user_session_path) : (link_to "Salir", destroy_user_session_path)
-              
+  %body.boxed-layout.container
+    = #image_tag "bg.jpg", class: 'overlay-image'
+    .overlay
 
-  .header
-    .navbar.navbar-default{:role => 'navigation'}
+    
+    
+
+
+    .top
       .container
-        .navbar-header
-          %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
-            %span.sr-only
-              Toggle navigation
-            %span.icon-bar                      
-            %span.icon-bar                      
-            %span.icon-bar                                    
-          %a.navbar-brand{href: root_path}
-            =image_tag("ocutec.png", id: "logo-header", alt: "Logo")
-        .collapse.navbar-collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav.navbar-right
+        %ul.loginbar.pull-right
+          %li            
             %li
-              %a{href: about_us_path, data: {"data-close-others" => "false"}}
-                La Empresa                  
-            %li.dropdown.active
-              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
-                Linea de Productos
-                %i.icon-angle-down
-              %ul.dropdown-menu
-                %li.active
-                  %a{href: "#"}
-                    Tecnología Digital
-                %li
-                  %a{href: "#"}
-                    Tratamientos
-                %li
-                  %a{href: "#"}
-                    Tallado Convencional
-                %li
-                  %a{href: "#"}
-                    Materiales 
-                %li
-                  %a{href: "#"}
-                    Tipos de Lentes 
-            %li
-              %a{href: promotions_path, data: {"data-close-others" => "false"}}
-                Promociones                  
-            %li
-              %a{href: events_path, data: {"data-close-others" => "false"}}
-                Eventos                  
-            %li
-              %a{href: magazine_path, data: {"data-close-others" => "false"}}
-                Revista Online                  
-            %li
-              %a{href: contact_us_path, data: {"data-close-others" => "false"}}
-                Contáctenos
+              = current_user ? (link_to "Login", new_user_session_path) : (link_to "Salir", destroy_user_session_path)
+                
+
+    .header
+      .navbar.navbar-default{:role => 'navigation'}
+        .container
+          .navbar-header
+            %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+              %span.sr-only
+                Toggle navigation
+              %span.icon-bar                      
+              %span.icon-bar                      
+              %span.icon-bar                                    
+            %a.navbar-brand{href: root_path}
+              =image_tag("ocutec.png", id: "logo-header", alt: "Logo")
+          .collapse.navbar-collapse.navbar-responsive-collapse
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                %a{href: about_us_path, data: {"data-close-others" => "false"}}
+                  La Empresa                  
+              %li.dropdown.active
+                %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
+                  Linea de Productos
+                  %i.icon-angle-down
+                %ul.dropdown-menu
+                  %li.active
+                    %a{href: "#"}
+                      Tecnología Digital
+                  %li
+                    %a{href: "#"}
+                      Tratamientos
+                  %li
+                    %a{href: "#"}
+                      Tallado Convencional
+                  %li
+                    %a{href: "#"}
+                      Materiales 
+                  %li
+                    %a{href: "#"}
+                      Tipos de Lentes 
+              %li
+                %a{href: promotions_path, data: {"data-close-others" => "false"}}
+                  Promociones                  
+              %li
+                %a{href: events_path, data: {"data-close-others" => "false"}}
+                  Eventos                  
+              %li
+                %a{href: magazine_path, data: {"data-close-others" => "false"}}
+                  Revista Online                  
+              %li
+                %a{href: contact_us_path, data: {"data-close-others" => "false"}}
+                  Contáctenos
     .container
       .wrap
 
