@@ -10,7 +10,7 @@ Ocutec::Application.routes.draw do
   get 'services'    => 'statics#services'
   get 'about_us'    => 'statics#about_us'
   get 'promotions'  => 'statics#promotions'
-  get 'seminars'    => 'statics#seminars'
+  get 'events'    => 'statics#events'
   get 'magazine'    => 'statics#magazine'
   get 'contact_us'  => 'statics#contact_us'
 

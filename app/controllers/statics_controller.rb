@@ -1,7 +1,5 @@
 class StaticsController < ApplicationController
-  def services
-  
-  end
+
 
   def about_us
     
@@ -11,7 +9,7 @@ class StaticsController < ApplicationController
     
   end
 
-  def seminars
+  def events
     
   end
 

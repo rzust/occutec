@@ -1,3 +1,14 @@
+.breadcrumbs.margin-bottom-40
+  .container
+    %h1.pull-left
+      Revista Online
+    %ul.pull-right.breadcrumb
+      %li 
+        = link_to "Inicio", root_path
+          
+      %li.active
+        Revista Online
+
 .row
   .col-sm-12
     .cycle-slideshow.magazine{"data-cycle-fx" => "scrollHorz", "data-cycle-timeout" => "0","data-cycle-slides" => "> div","data-cycle-next" => "#next", "data-cycle-prev" => "#prev"}

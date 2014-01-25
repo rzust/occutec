@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cycle2
 //= require jquery-migrate-1.2.1.min
 //= require bootstrap/js/bootstrap.min
 //= require hover-dropdown.min
@@ -19,7 +20,6 @@
 //= require flexslider/jquery.flexslider-min
 //= require parallax-slider/js/modernizr
 //= require parallax-slider/js/jquery.cslider
-//= require jquery.cycle2
 //= require app
 //= require gmap/gmap
 //= require pages/index
