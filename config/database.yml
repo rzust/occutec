@@ -1,7 +1,6 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: ocutec_development
-  username: root
-  host: localhost
-  password: razm
+  database: c9
+  username: <%=ENV['C9_USER']%>
+  host: <%=ENV['IP']%>
