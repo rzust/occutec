@@ -3,5 +3,5 @@ development:
   encoding: utf8
   database: ocutec_development
   username: root
-  host: localhost
   password: razm
+  host: localhost
