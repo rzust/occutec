@@ -1,0 +1,39 @@
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-user
+          = @user.is_admin ? "Administrador" : "Usuario"
+      .box-content.box-double-padding
+        = form_for [:admin, @user], :html => {:class => "form"} do |f|
+          = f.hidden_field :is_admin, :value => @user.is_admin
+          %fieldset
+            .col-sm-4
+            .col-sm-7.col-sm-offset-1
+              - if !@user.is_admin
+                .form-group
+                  = f.label :company, "Empresa"
+                  = f.text_field :company, :class => "form-control", :type => "text"
+              .form-group
+                = f.label :email, "E-mail"
+                = f.text_field :email, :class => "form-control", :type => "text"
+              .form-group
+                = f.label :first_name, "Nombre"
+                = f.text_field :first_name, :class => "form-control", :type => "text"
+              .form-group
+                = f.label :last_name, "Apellido"
+                = f.text_field :last_name, :class => "form-control", :type => "text"
+              .form-group
+                = f.label :phone, "Teléfono"
+                = f.text_field :phone, :class => "form-control", :type => "text"
+              .form-group
+                = f.label :address, "Dirección"
+                = f.text_field :address, :class => "form-control", :type => "text"
+                %p.help-block
+                  %small.text-muted
+                    Calle XX, (dpto/ofi XX), Distrito, Provincia
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-5
+                = f.submit "Guardar", :class => "btn btn-primary btn-lg"
