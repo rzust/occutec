@@ -23,9 +23,9 @@
             %a{href: customers_admin_users_path}
               %i.icon-caret-right
               %span
-                Usuarios
+                Clientes
           %li
-            %a{href: 'validations.html'}
+            %a{href: admin_access_requests_path}
               %i.icon-caret-right
               %span
                 Solicitudes
@@ -66,7 +66,7 @@
           %i.icon-angle-down.angle-down            
         %ul.nav.nav-stacked
           %li
-            %a{href: "#"}
+            %a{href: admin_edit_home_path}
               %i.icon-caret-right
               %span
                 Inicio
@@ -76,7 +76,7 @@
               %span
                 Servicios
           %li
-            %a{href: "#"}
+            %a{href: admin_edit_about_us_path}
               %i.icon-caret-right
               %span
                 Acerca de la Empresa
@@ -101,10 +101,19 @@
               %span
                 Contáctenos  
           %li
-            %a{href: "#"}
+            %a{class: 'dropdown-collapse', href: '#'}
               %i.icon-caret-right
               %span
-                Línea de Productos    
+                Línea de Productos
+              %i.icon-angle-down.angle-down
+            
+            %ul.nav.nav-stacked
+              %li
+                %a{href: admin_edit_technology_path}
+                  %i.icon-caret-right
+                  %span
+                    Tecnología Digital                         
+                    
 
       %li
         %a{href: 'buttons_and_icons.html'}

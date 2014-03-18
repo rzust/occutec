@@ -14,15 +14,10 @@
   .row.margin-bottom-30
     .col-md-6.md-margin-bottom-40
       %p
-        Ocutec SAC es una empresa fundada en el año 2005 dedicada a ofrecer productos de la más alta tecnología que satisfagan las necesidades del mercado óptico del país.
-        %br
-        %br
-        Contamos con socios estratégicos líderes a nivel mundial, como: Essilor, Transitions e ILT. Apostamos por el crecimiento de los profesionales de la salud visual en el Perú, buscando el desarrollo de nuestros clientes brindándoles constantes capacitaciones y actualizaciones con el fin de colaborar en su crecimiento profesional.
-        %br
-        %br
-        Nuestro personal ha sido seleccionado con el único objetivo de ofrecerles un verdadero servicio personalizado de asesoramiento constante con el fin de atender cada uno de sus requerimientos.
+        = @sections[0].body.html_safe
         
     .col-md-6.md-margin-bottom-40
+      = image_tag @sections[0].image_url.to_s, :class => "fill img-rounded"
 
 
 

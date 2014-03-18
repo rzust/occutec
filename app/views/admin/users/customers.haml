@@ -37,6 +37,8 @@
                     E-mail
                   %th
                     Teléfono
+                  %th
+                    Acciones
               %tbody
                 - customers.each do |x|
                   %tr
@@ -45,6 +47,9 @@
                     %td= x.last_name
                     %td= x.email
                     %td= x.phone
+                    %td
+                      = link_to "Show", admin_user_path(x),      :class => "btn btn-info btn-xs"
+                      = link_to "Edit", edit_admin_user_path(x), :class => "btn btn-warning btn-xs"
 
 .row
   .col-sm-12

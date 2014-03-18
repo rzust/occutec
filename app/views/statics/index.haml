@@ -1,4 +1,4 @@
-.slider-inner
+.slider-inner.margin-bottom-30
   #da-slider.da-slider
     .da-slide
       %h2
@@ -65,5 +65,170 @@
       %span.da-arrows-prev
       %span.da-arrows-next  
 
+.container
+  .row
+    .col-md-4
+      .service
+        %i.icon-resize-small.service-icon
+        .desc
+          %h4
+            = @sections[0].title.html_safe
+          %p
+            = @sections[0].body.html_safe
+    
+    .col-md-4
+      .service
+        %i.icon-cogs.service-icon
+        .desc
+          %h4
+            = @sections[1].title.html_safe
+          %p
+            = @sections[1].body.html_safe
+
+    .col-md-4
+      .service
+        %i.icon-plane.service-icon
+        .desc
+          %h4
+            = @sections[2].title.html_safe
+          %p
+            = @sections[2].body.html_safe  
+
+  .headline
+    %h2
+      Recent Works
+  .row.margin-bottom-60
+    .col-md-3.col-sm-6
+      .thumbnails.thumbnail-style.thumbnail-kenburn
+        .thumbnail-img
+          .overflow-hidden
+            %img.img-responsive{src:"assets/img/main/2.jpg", alt:""}
+            %a.btn-more.hover-effect{href:"#"}
+              read more
+        .caption
+          %h3
+            %a.hover-effect{href:"#"}
+              Project One
+          %p
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
+              
+    .col-md-3.col-sm-6
+      .thumbnails.thumbnail-style.thumbnail-kenburn
+        .thumbnail-img
+          .overflow-hidden
+            %img.img-responsive{src:"assets/img/main/3.jpg", alt:""}
+            %a.btn-more.hover-effect{href: "#"}
+              read more +
+        .caption
+          %h3
+            %a.hover-effect{href: "#"}
+              Project Two
+          %p
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
+              
+    .col-md-3.col-sm-6
+      .thumbnails.thumbnail-style.thumbnail-kenburn
+        .thumbnail-img
+          .overflow-hidden
+            %img.img-responsive{src:"assets/img/main/2.jpg", alt:""}
+            %a.btn-more.hover-effect{href:"#"}
+              read more
+        .caption
+          %h3
+            %a.hover-effect{href:"#"}
+              Project One
+          %p
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
+              
+    .col-md-3.col-sm-6
+      .thumbnails.thumbnail-style.thumbnail-kenburn
+        .thumbnail-img
+          .overflow-hidden
+            %img.img-responsive{src:"assets/img/main/3.jpg", alt:""}
+            %a.btn-more.hover-effect{href: "#"}
+              read more +
+        .caption
+          %h3
+            %a.hover-effect{href: "#"}
+              Project Two
+          %p
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
 
 
+
+
+
+
+
+  #clients-flexslider.flexslider.home.clients
+    .headline
+      %ul.slides
+        %li
+          %a
+            =image_tag("logos/4_WAVE-2.0.jpg", alt: "" )
+            =image_tag("logos/4_WAVE-2.0.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/5_DDV.jpg", alt: "" )
+            =image_tag("logos/5_DDV.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/adaptar-ds.jpg", alt: "" )
+            =image_tag("logos/adaptar-ds.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/logo-nuevo-transitions.jpg", alt: "" )
+            =image_tag("logos/logo-nuevo-transitions.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/Ovation-Digital.jpg", alt: "" )
+            =image_tag("logos/Ovation-Digital.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/ovation-Ds.jpg", alt: "" )
+            =image_tag("logos/ovation-Ds.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/Varilux-Physio-360-NE.jpg", alt: "" )
+            =image_tag("logos/Varilux-Physio-360-NE.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/Varilux-Physio-Drx.jpg", alt: "" )
+            =image_tag("logos/Varilux-Physio-Drx.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/Essilor-Advans.jpg", alt: "" )
+            =image_tag("logos/Essilor-Advans.jpg", class: "color-img", alt: "")
+        %li
+          %a
+            =image_tag("logos/4_WAVE-2.0.jpg", alt: "" )
+            =image_tag("logos/4_WAVE-2.0.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/5_DDV.jpg", alt: "" )
+            =image_tag("logos/5_DDV.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/adaptar-ds.jpg", alt: "" )
+            =image_tag("logos/adaptar-ds.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/logo-nuevo-transitions.jpg", alt: "" )
+            =image_tag("logos/logo-nuevo-transitions.jpg", class: "color-img", alt: "")
+
+        %li
+          %a
+            =image_tag("logos/Ovation-Digital.jpg", alt: "" )
+            =image_tag("logos/Ovation-Digital.jpg", class: "color-img", alt: "")
+       

@@ -16,7 +16,7 @@
         
         %ul.dropdown-menu
           %li
-            %a{href: 'user_profile.html'}
+            %a{href: admin_user_path(current_user)}
               %i.icon-user
               Profile            
           %li.divider
@@ -24,5 +24,3 @@
             %a{href: destroy_user_session_path, :method => :delete }
               %i.icon-signout
               Sign out
-          %li
-            = link_to "Log Out", destroy_user_session_path, method: :delete

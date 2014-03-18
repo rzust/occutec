@@ -15,7 +15,7 @@
             %i.icon-angle-right
           %li.active
             Administradores
-.row
+.row{"ng-app" => ""}
   .col-sm-12
     .box.bordered-box.blue-border
       .box-header.blue-background
@@ -35,13 +35,33 @@
                     E-mail
                   %th
                     Teléfono
+                  %th
+                    Acciones
               %tbody
                 - administrators.each do |x|
                   %tr
-                    %td= x.first_name
+                    %td
+                      %span{"ng-hide"=>"editing", "ng-click"=>"editing = true"}
+                        = x.first_name
+                        | {{user.firstName}} 
+                      %form{"ng-show"=>"editing", "ng-submit"=>"editing = false"}
+                        .col-xs-7
+                          %input{type: "text", "ng-model"=>"user.firstName", "ng-required"=>""}
+                          %button.btn{type: "submit"}
+                            Save
+                        
                     %td= x.last_name
                     %td= x.email
                     %td= x.phone
+                    %td
+                      = link_to "Show", admin_user_path(x),      :class => "btn btn-info btn-xs"
+                      = link_to "Edit", edit_admin_user_path(x), :class => "btn btn-warning btn-xs"
+
+
+
+
+
+
 
 .row
   .col-sm-12

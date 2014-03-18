@@ -1,0 +1,49 @@
+%meta{content: "2", name: "page_id"}
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Contenido
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_root_path}
+              %i.icon-bar-chart
+          %li.separator
+            %i.icon-angle-right
+          %li
+            Contenido
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Inicio
+
+
+.row{"ng-app" => "Ocutec"}
+  .col-sm-12
+    .box
+      .box-header.blue-background
+        .title
+          .icon-edit
+          Edición de Página: Inicio
+      .box-content
+        %div{"ng-controller" => "StaticsCtrl"}
+          %form.form.form-horizontal{style: "margin-bottom: 0;", "ng-submit" => "saveSections()"}
+            .form-group{"ng-repeat" => "section in sections"}
+              %input{type: "hidden", "ng-model" => "section.id", value: "{{section.id}}"}
+              %label.col-md-2.control-label
+                {{section.title}}
+              .col-md-10
+                %textarea.col-md-12.form-control{"ng-model" => "section.body", rows: '18'}
+            .form-actions.form-actions-padding-sm
+              .row
+                .col-md-10.col-md-offset-2
+                  %button.btn.btn-primary{type: 'submit'}
+                    %i.icon-save
+                      Save
+
+
+
+

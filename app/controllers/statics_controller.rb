@@ -1,8 +1,13 @@
 class StaticsController < ApplicationController
 
+  def index
+    page = Page.find_by_name("home")
+    @sections = page.sections
+  end
 
   def about_us
-    
+    page = Page.find_by_name("about_us")
+    @sections = page.sections
   end
 
   def promotions
@@ -30,6 +35,13 @@ class StaticsController < ApplicationController
   def contact_us
     
   end
+
+  def technology
+    page = Page.find_by_name("technology")
+    @sections = page.sections
+  end
+
+
 
   private
   def issuu_get codes

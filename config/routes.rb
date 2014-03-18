@@ -1,10 +1,6 @@
 Ocutec::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "admin/sessions" }
   
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'statics#index'
 
   get 'services'    => 'statics#services'
@@ -13,17 +9,38 @@ Ocutec::Application.routes.draw do
   get 'events'    => 'statics#events'
   get 'magazine'    => 'statics#magazine'
   get 'contact_us'  => 'statics#contact_us'
+  
+  get 'materials'  => 'statics#materials'
+  get 'technology'  => 'statics#technology'
+  get 'treatments'  => 'statics#treatments'
+  get 'milling'  => 'statics#milling'
+  get 'futurex'  => 'statics#futurex'
+  get 'type_of_glasses'  => 'statics#type_of_glasses'
 
   namespace :admin do
     root 'dashboard#index'
-    get 'dashboard' => 'dashboard#index'
 
+    get  'dashboard'                    => 'dashboard#index'
+    get  'edit_home'                    => 'statics#edit_home'
+    get  'edit_about_us'                => 'statics#edit_about_us'
+    get  'edit_promotion'               => 'statics#edit_promotion'
+    get  'edit_events'                  => 'statics#edit_events_us'
+    get  'edit_contact_us'              => 'statics#edit_contact_us'
+    
+    get  'edit_technology'              => 'statics#edit_technology'
+
+    post 'update_sections'              => 'sections#update_sections'
+
+    resources :pages do
+      resources :sections
+    end
     resources :users do
       collection do
         get 'administrators'
         get 'customers'
       end
     end
+    resources :access_requests
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

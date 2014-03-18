@@ -11,7 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114015016) do
+ActiveRecord::Schema.define(version: 20140302063056) do
+
+  create_table "access_requests", force: true do |t|
+    t.string   "company"
+    t.string   "legal_code"
+    t.string   "contact"
+    t.string   "phone_1"
+    t.string   "phone_2"
+    t.text     "comment"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pages", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "logo"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "body"
+    t.string   "image"
+    t.string   "image_size"
+    t.boolean  "has_title"
+    t.boolean  "has_image"
+    t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

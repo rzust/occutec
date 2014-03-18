@@ -22,3 +22,56 @@
 
 = render "devise/shared/links" 
 
+.text-center
+
+  %a{"data-toggle" => "modal", href: "#modal-example2", role: "button"}
+    Solicitar acceso como cliente
+
+.modal.fade.in#modal-example2{tabindex: "-1", style: "display: none;", "aria-hidden"=>"true"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{"aria-hidden" => "true", :class => "close", "data-dismiss"=>"modal", type: "button"}
+          ×
+        %h4.modal-title{id: "myModalLabel"}
+          Solicitud
+      
+      = form_tag(admin_access_requests_path, method: "post", html: {style: "margin-bottom: 0;", :class => "form"}) do
+        .modal-body
+          .form-group
+            %label
+              Empresa
+            = text_field(:access_request, :company, {:class => "form-control", :placeholder => "Razón Social"})
+
+          .form-group
+            %label
+              RUC
+            = text_field(:access_request, :legal_code, {:class => "form-control", :placeholder => "RUC de la empresa"})
+
+          %hr.hr-normal
+          .form-group
+            %label
+              Nombre de contacto
+            = text_field(:access_request, :contact, {:class => "form-control", :placeholder => "Nombre y Apellido"})
+          
+          .form-group
+            %label
+              Teléfono
+            = text_field(:access_request, :phone_1, {:class => "form-control", :placeholder => "Teléfono Principal"})
+                  
+          .form-group
+            %label
+              Teléfono Alt.
+            = text_field(:access_request, :phone_2, {:class => "form-control", :placeholder => "Teléfono Secundario"})
+          
+          .form-group
+            %label
+              Comentario
+            = text_area(:access_request, :comment, {:class => "form-control", :placeholder => "Si desea, deje un comentario"})        
+          
+
+          .modal-footer
+            %button.btn.btn-default{ "data-dismiss"=>"modal", type:"button"}
+              Cancelar
+            = submit_tag("Enviar", {:class => "btn btn-primary"})
+              
