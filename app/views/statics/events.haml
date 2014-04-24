@@ -1,0 +1,61 @@
+.breadcrumbs.margin-bottom-20
+  .container
+    %h1.pull-left
+      Eventos
+
+.container    
+  .gallery-page
+    - counter = 4
+    - count = @event_images.count
+    - @event_images.each_with_index do |image, i|
+
+      - if counter/4 == 1
+        - counter = 0
+        <div class="row margin-bottom-20">
+      - else
+        - counter += 1
+
+      .col-md-3.col-sm-6
+        %a.thumbnail.fancybox-button.zoomer{ "data-rel"=>"fancybox-button", title: "Project Title", href: "#{image.image_url(:event)}"}
+          %span.overlay-zoom  
+            = image_tag "#{image.image_url(:thumb)}", :class => "img-responsive"
+            .zoom-icon
+
+      - if counter == 3 || (i+1) == count
+        - counter += 1
+        </div>
+
+
+
+    %hr.margin-bottom-30
+
+    .text-right
+      %ul.pagination
+        %li
+          %a{href: "#"}
+            Prev
+        %li
+          %a{href: "#"}
+            1
+        %li
+          %a{href: "#"}
+
+            2
+        %li.active
+          %a
+            3
+        %li
+          %a{href: "#"}
+            4
+        %li
+          %a{href: "#"}
+            5
+        %li
+          %a{href: "#"}
+            Next
+
+:javascript
+  // jQuery(document).ready(function() {
+  //     App.init();
+  //     App.initFancybox();
+  // });

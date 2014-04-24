@@ -1,0 +1,56 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-group
+        %span
+          Mensajes
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+              
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Mensajes
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Mensajes
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped{style: 'margin-bottom:0;'}
+              %thead  
+                %tr
+                  %th
+                    Nombre
+                  %th
+                    E-mail
+                  %th
+                    Estado
+                  %th
+                    Enviado el:
+                  %th
+                    Acciones
+              %tbody
+                - messages.each do |x|
+                  %tr{id: x.id}
+                    %td= x.name                    
+                    %td= x.email
+                    %td= x.state_name
+                    %td= x.created_at
+                    %td
+                      = link_to "Show", admin_message_path(x),      :class => "btn btn-primary btn-xs"
+                      = link_to "Delete", admin_message_path(x), method: :delete, :class => "btn btn-danger btn-xs", remote: true
+
+
+
+
+
+
+

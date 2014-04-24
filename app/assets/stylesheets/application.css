@@ -15,6 +15,7 @@
  *= require responsive
  *= require flexslider/flexslider
  *= require parallax-slider/css/parallax-slider
+ *= require fancybox/source/jquery.fancybox.css
  *= require slider/animate.min
  *= require slider/jquery.onebyone
  *= require slider/responsive-slider

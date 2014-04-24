@@ -16,7 +16,7 @@
     %meta{:content => "", :name => "description"} 
     %meta{:content => "", :name => "author"}
     = favicon_link_tag 
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all"
     %script
       var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
     = javascript_include_tag "https://maps.google.com/maps/api/js?sensor=true"
@@ -55,71 +55,74 @@
                 %span.icon-bar                      
                 %span.icon-bar                                    
               %a.navbar-brand{href: root_path}
-                =image_tag("ocutec.png", id: "logo-header", alt: "Logo")
+                =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
             .collapse.navbar-collapse.navbar-responsive-collapse
               %ul.nav.navbar-nav.navbar-right
-                %li
+                %li.about_us
                   %a{href: about_us_path, data: {"data-close-others" => "false"}}
                     La Empresa                  
-                %li.dropdown.active
+                %li.dropdown.technology.treatments.milling.futurex.materials.type_of_glasses
                   %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
                     Linea de Productos
                     %i.icon-angle-down
                   %ul.dropdown-menu
-                    %li.active
+                    %li.technology
                       %a{href: technology_path}
                         Tecnología Digital
-                    %li
+                    %li.treatments
                       %a{href: treatments_path}
                         Tratamientos
-                    %li
+                    %li.milling
                       %a{href: milling_path}
                         Tallado Convencional
-                    %li
+                    %li.futurex
                       %a{href: futurex_path}
                         Lentes Future X
-                    %li
+                    %li.materials
                       %a{href: materials_path}
                         Materiales 
-                    %li
+                    %li.type_of_glasses
                       %a{href: type_of_glasses_path}
                         Tipos de Lentes 
-                %li
+                %li.promotions
                   %a{href: promotions_path, data: {"data-close-others" => "false"}}
                     Promociones                  
-                %li
+                %li.events
                   %a{href: events_path, data: {"data-close-others" => "false"}}
                     Eventos                  
-                %li
+                %li#magazine
                   %a{href: magazine_path, data: {"data-close-others" => "false"}}
                     Revista Online                  
-                %li
+                %li.contact_us
                   %a{href: contact_us_path, data: {"data-close-others" => "false"}}
                     Contáctenos
       .container
-        - flash.each do |name, msg| 
-          = content_tag :div, class: "#{name} alert fade in" do
-            = msg
-            %button{type: "button", :class => "close", "data-dismiss"=>"alert"}
-              ×
   
         .wrap
 
           = yield 
 
 
-    .copyright{style: "margin-top: 350px;"}
+    .copyright{style: "margin-top: 100px;"}
       = render "shared/copyright"
       
 :javascript
 
+  $(".#{action_name}").each(function(index){
+    $(this).addClass("active");
+  });
 
-  var map;                                  // Map Variable for Google Maps API (Property Locations)  
-  var office_map;                               // Map Variable for Google Maps API (Office location)       
+  var action = "#{action_name}";
+  
+  if(action=="magazine"){
+    $("#magazine").addClass("active");
+  }
+   
   jQuery(document).ready(function() {
     App.init();
     App.initSliders();
-    Index.initParallaxSlider();
+    
+    App.initFancybox();
 
     $("#banner").oneByOne({                          // the wrapper's name 
       className: 'oneByOne1',                             // the wrapper div's class name of each slider  
@@ -146,161 +149,4 @@
 
     }, 3000);
 
-    if ($("#renting-map-js").length > 0){
-      generateMapMarkers ();
-    }
-
-    // Ini GPS Converter  
-    
-    GPSconverter();
-
   });
-    /* ---------------------------------------------------------------------- */
-    /*  Generate Google Map Markers
-    /* ---------------------------------------------------------------------- */
-      
-    
-     
-    /* end Google Map Pins */
-  function generateMapMarkers () {
-
-      var map_locations = [],
-        container = document.getElementById('renting-map-js'),
-        c = $(container).children().get(),
-        l = c.length,
-        i, obj, p, m, j;
-      
-      //loop through all child nodes
-      for (i = 0; i < l; i++) {
-        obj = {};
-        obj.img = c[i].getElementsByTagName('img')[0].src;
-        p = c[i].getElementsByTagName('p');
-        m = p.length;
-        for (j = 0; j < m; j++)
-        obj[p[j].className] = p[j].firstChild.nodeValue;
-        map_locations[i] = obj;
-        //console.log(obj);
-      }
-      
-      //print all arrays
-      //console.log(map_locations);
-      
-      //ini google map plot
-      google.maps.event.addDomListener(window, 'load', initializeMap(map_locations));
-  }
-
-  /* end google map markers */
-
-  /* ---------------------------------------------------------------------- */
-  /*  Convert normal address to google map coordinates
-  /* ---------------------------------------------------------------------- */
-  
-  function GPSconverter() {
-    if($('#single_map').length == 0) 
-    return;
-    var $single_map =  $("#single_map");
-    var theAddress = $single_map.attr('data-address');
-    var iconRel =   $single_map.attr('data-iconrel');
-    var zoomLevel = parseInt($single_map.attr('data-zoom'));
-    var mygc = new google.maps.Geocoder(theAddress);
-    mygc.geocode({'address' : theAddress}, function(results, status){
-      var mLat = results[0].geometry.location.lat();
-      var mLong = results[0].geometry.location.lng();
-      //console.log(mLat, mLong, iconRel, zoomLevel)
-      initializeOneMap(mLat, mLong, iconRel, zoomLevel)
-    });
-  }
-
-  /* end convert */
-
-  /* ---------------------------------------------------------------------- */
-  /*  Plot single map pin
-  /* ---------------------------------------------------------------------- */
-    
-  function initializeOneMap(mLat, mLong, iconRel, zoomLevel) {
-    var myOptions = {
-      zoom: zoomLevel,
-      center: new google.maps.LatLng(mLat, mLong),
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      draggable: true,
-      disableDoubleClickZoom: false,
-      zoomControl: false,
-      overviewMapControl: false,
-      streetViewControl: false,
-      mapTypeControl: false,
-      scrollwheel: true,
-      disableDefaultUI: false
-    };
-    var office_map = new google.maps.Map(document.getElementById('single_map'), myOptions);
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(mLat, mLong),
-      map: office_map,
-      icon: iconRel
-    });
-  }
-
-  /* end single map plot*/
-
-  /* ---------------------------------------------------------------------- */
-  /*  Google Map API: Plant Pins
-   * 
-   *  For control options please go to:
-   *  https://developers.google.com/maps/documentation/javascript/controls
-   *
-  /* ---------------------------------------------------------------------- */  
-    
-  function initializeMap(map_locations) {
-    if($("#map_div").length == 0)
-      return;
-    $thisMap = $("#google-map-js");
-    var latc = $thisMap.attr('data-lat');
-    var lngc = $thisMap.attr('data-lng');
-    var zoomc = parseInt($thisMap.attr('data-zoom'));
-    //console.log(latc, lngc);
-    var iniLat = new google.maps.LatLng(latc, lngc);
-    var mapOptions = {
-      zoom: zoomc,
-      center: iniLat,
-      //disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var infowindow = new google.maps.InfoWindow();
-    var map = new google.maps.Map(document.getElementById("map_div"), mapOptions);
-    $.each(map_locations, function(key, value) { 
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(value['lat'], value['lng']),
-        map: map,
-        icon: "img/pin/marker.png",
-        scrollwheel: false,
-        streetViewControl:true,
-        title: value['title']
-      });
-      
-      var link = "link";
-      google.maps.event.addListener( marker, 'click', function() {
-        // Setting the content of the InfoWindow
-        var content = '<div id="info" style="width:300px; height:100px;"><div>' + 
-                '<div style="display:inline-block; width:86px; verticle-align:top; float:left;"><img src='+value['img']+' class="thumbnail" style="width:80%; verticle-align:top;" /></div>' + 
-                '<div style="display:inline-block; width:200px; float:left;"><h6>' + 
-                value['prop-title'] + 
-                '</h6><b>' + 
-                value['street'] + 
-                '</b><br/>' + 
-                '<strong>&#36;' + 
-                value['price'] + 
-                '</strong>' + 
-                '<p><a href="property.html" class="btn btn-mini pull-right">Read More</a></p>' + 
-                '</div></div></div>';
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      });
-      
-    });
-   }
-  $(window).load(function(){
-    //CSS 100% with borders add extra 2px width, so we take out the extra 2px
-    $("#map_div").width(($(".google-map-js").width()-2+'px'));
-
-  });
-
-

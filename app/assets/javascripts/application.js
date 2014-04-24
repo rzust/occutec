@@ -22,10 +22,13 @@
 //= require parallax-slider/js/jquery.cslider
 //= require slider/jquery.onebyone.min
 //= require slider/jquery.touchwipe.min
+//= require fancybox/source/jquery.fancybox.js
+
+//= require unslider.min
 //= require app
 //= require gmap/gmap
 //= require pages/index
 //= require pages/contact
-//= require turbolinks
+//= #require turbolinks
 //= #require_tree .
 

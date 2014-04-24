@@ -25,7 +25,7 @@ class Admin::SectionsController < ApplicationController
   def update_sections
     params[:sections].each do |x|
       section = Section.find(x[1][:id])
-      section.update(body: x[1][:body], image: x[1][:image])
+      section.update(title: x[1][:title], body: x[1][:body], image: x[1][:image])
     end   
     redirect_to :back and return
   end

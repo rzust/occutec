@@ -1,0 +1,2 @@
+module Admin::MainSliderImagesHelper
+end

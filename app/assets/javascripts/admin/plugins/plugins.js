@@ -26,6 +26,7 @@
 //= require admin/plugins/fileupload/jquery.fileupload-fp.min
 //= require admin/plugins/fileupload/jquery.fileupload-ui.min
 //= require admin/plugins/fileupload/jquery.fileupload-init
+
 //= require admin/plugins/timeago/jquery.timeago
 //= require admin/plugins/slimscroll/jquery.slimscroll.min
 //= require admin/plugins/autosize/jquery.autosize-min

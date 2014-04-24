@@ -15,7 +15,7 @@
             %i.icon-angle-right
           %li.active
             Administradores
-.row{"ng-app" => ""}
+.row
   .col-sm-12
     .box.bordered-box.blue-border
       .box-header.blue-background
@@ -40,16 +40,7 @@
               %tbody
                 - administrators.each do |x|
                   %tr
-                    %td
-                      %span{"ng-hide"=>"editing", "ng-click"=>"editing = true"}
-                        = x.first_name
-                        | {{user.firstName}} 
-                      %form{"ng-show"=>"editing", "ng-submit"=>"editing = false"}
-                        .col-xs-7
-                          %input{type: "text", "ng-model"=>"user.firstName", "ng-required"=>""}
-                          %button.btn{type: "submit"}
-                            Save
-                        
+                    %td= x.first_name                    
                     %td= x.last_name
                     %td= x.email
                     %td= x.phone

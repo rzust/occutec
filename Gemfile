@@ -23,8 +23,9 @@ gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem "compass-rails", "~> 1.1.2"
 gem 'angularjs-rails'
+gem 'will_paginate'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -37,8 +38,11 @@ end
 
 gem 'devise'
 gem 'state_machine'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
+
+gem 'quiet_assets', '~> 1.0.2'
+# gem 'jquery-fileupload-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

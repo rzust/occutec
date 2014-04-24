@@ -1,0 +1,83 @@
+
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Contenido
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_root_path}
+              %i.icon-bar-chart
+          %li.separator
+            %i.icon-angle-right
+          %li
+            Contenido
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Tallado Convencional
+
+
+.row
+  .col-sm-12
+    .box
+      .box-header.blue-background
+        .title
+          .icon-edit
+          Edición de Página: Tallado Convencional
+      .box-content
+        %div
+          = form_tag(admin_update_sections_path, method: "POST", :class => "form form-horizontal", style: "margin-bottom: 0;", multipart: true) do
+            %input{name: "page_id", type: "hidden", value: "#{@sections.first.page_id}"}
+            - @sections.each do |x|
+              %fieldset
+                .form-group
+                  = hidden_field_tag("sections[section_#{x.id}][id]", "#{x.id}")
+                  .col-md-12
+                    .row
+                      .col-sm-12
+                        .box
+                          .box-header.purple-background
+                            .title= "#{x.name}"
+                              
+                            .actions
+                              %a.btn.box-collapse.btn-xs.btn-link{href: "#"}
+                                %i
+
+                          .box-content
+                            - if x.has_title?  
+                              .form-group
+                                .col-md-2
+                                  = label_tag "Título"
+                                .col-md-10
+                                  = text_field_tag("sections[section_#{x.id}][title]", "#{x.title}", :class => "col-md-12 form-control")
+                            = text_area_tag("sections[section_#{x.id}][body]", "#{x.body}", rows: '10', :class => "form-control wysihtml5", id: "body")
+                - if x.has_image?  
+                  .form-group
+                    - if !x.image.nil?
+               
+                      .col-sm-3.col-lg-5
+                        .box
+                          .box-content
+                            = image_tag x.image_url, :class => "img-responsive"
+   
+                    .col-md-12
+                      = file_field_tag("sections[section_#{x.id}][image]", :class => "col-md-12 form-control") 
+
+
+
+
+            .form-actions.form-actions-padding-sm
+              .row
+                .col-md-10.col-md-offset-2
+                  %button.btn.btn-primary{type: 'submit'}
+                    %i.icon-save
+                      Save
+
+
+
+
+  

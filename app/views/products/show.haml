@@ -1,0 +1,53 @@
+.breadcrumbs.margin-bottom-40
+  .container
+    %h1.pull-left
+      Tecnología Digital
+    %ul.pull-right.breadcrumb
+      %li
+        
+        %a{href: root_path}
+          %i.icon-home
+
+      %li 
+        = link_to "Línea de Productos", root_path
+          
+      %li.active
+        Tecnología Digital
+
+.row.margin-bottom-40
+  .col-md-12
+    #slide-wrapper
+      #banner
+        - product.gallery.gallery_images.each do |x|
+          .oneByOne_item
+            =image_tag x.image_url(:slider), :class => "img-responsive"
+
+
+.purchase
+  .container
+    .row
+      .col-md-12
+        %span
+          = product.name
+        %p
+          = product.description
+
+- product.sections.each do |x|
+  .row
+    .col-md-2
+    .col-md-8
+      .headline  
+        %h2
+          = x.title if !x.title.nil?
+  .row.margin-bottom-40
+    .col-md-2
+    -if x.image?
+      .col-md-5
+        %p
+          = x.body
+      .col-md-3
+        = image_tag x.image_url(:section), :class => "img-responsive"
+    -else
+      .col-md-8
+        %p
+          = x.body

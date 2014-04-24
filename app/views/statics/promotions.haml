@@ -1,0 +1,14 @@
+.breadcrumbs.margin-bottom-40
+  .container
+    %h1.pull-left
+      Promociones
+
+
+.row.margin-bottom-40
+  .col-md-12
+    #slide-wrapper
+      #banner
+        - @gallery_images.each do |x|
+          .oneByOne_item
+            =image_tag x.image_url(:slider)
+  .clear.margin-bottom-40

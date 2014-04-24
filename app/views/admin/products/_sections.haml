@@ -1,0 +1,20 @@
+- sections.each do |x|
+  %hr
+  .row
+    .col-sm-2
+    .col-sm-8
+      .form-group
+        = label_tag "Título"
+        = text_field_tag "section[#{x.id}][title]", x.title, :class => "form-control"
+      .form-group
+        = label_tag "Descripción"
+        = text_area_tag("section[#{x.id}][body]", x.body, rows: '10', :class => "form-control wysihtml5", id: "body")
+      .form-group
+        %label 
+          Image
+        .box
+          .box-content
+            - if !x.image.nil?
+              = image_tag x.image_url, :class => "img-responsive"
+      .form-group
+        = file_field_tag("section[#{x.id}][image]", :class => "col-md-12 form-control") 

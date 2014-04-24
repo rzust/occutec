@@ -32,7 +32,7 @@
             
       %li
         %a{class: "dropdown-collapse", href: "#"}
-          %i.icon-group
+          %i.icon-truck
           %span
             Ordenes
           %i.icon-angle-down.angle-down            
@@ -57,49 +57,53 @@
               %i.icon-caret-right
               %span
                 Todas
+
+      %li
+        %a{class: "dropdown-collapse", href: "#"}
+          %i.icon-location-arrow
+          %span
+            Contactos
+          %i.icon-angle-down.angle-down            
+        %ul.nav.nav-stacked
+          %li
+            %a{href: edit_main_admin_contacts_path}
+              %i.icon-caret-right
+              %span
+                Principal
+          %li
+            %a{href: admin_contacts_path}
+              %i.icon-caret-right
+              %span
+                Contactos
+
      
       %li
         %a{class: "dropdown-collapse", href: "#"}
-          %i.icon-group
+          %i.icon-edit-sign
           %span
             Contenido
           %i.icon-angle-down.angle-down            
         %ul.nav.nav-stacked
           %li
-            %a{href: admin_edit_home_path}
+            %a{href: panel_admin_main_slider_images_path}
               %i.icon-caret-right
               %span
                 Inicio
-          %li
-            %a{href: "#"}
-              %i.icon-caret-right
-              %span
-                Servicios
           %li
             %a{href: admin_edit_about_us_path}
               %i.icon-caret-right
               %span
                 Acerca de la Empresa
           %li
-            %a{href: "#"}
+            %a{href: admin_edit_promotion_path}
               %i.icon-caret-right
               %span
                 Promociones 
           %li
-            %a{href: "#"}
+            %a{href: admin_events_path}
               %i.icon-caret-right
               %span
-                Seminarios 
-          %li
-            %a{href: "#"}
-              %i.icon-caret-right
-              %span
-                Revista Online 
-          %li
-            %a{href: "#"}
-              %i.icon-caret-right
-              %span
-                Contáctenos  
+                Eventos 
           %li
             %a{class: 'dropdown-collapse', href: '#'}
               %i.icon-caret-right
@@ -109,48 +113,46 @@
             
             %ul.nav.nav-stacked
               %li
-                %a{href: admin_edit_technology_path}
+                %a{href: admin_path(1)}
                   %i.icon-caret-right
                   %span
-                    Tecnología Digital                         
+                    Tecnología Digital  
+              %li
+                %a{href: admin_path(2)}
+                  %i.icon-caret-right
+                  %span
+                    Tallado Convencional   
+              %li
+                %a{href: admin_path(3)}
+                  %i.icon-caret-right
+                  %span
+                    Tratamientos   
+              %li
+                %a{href: admin_path(4)}
+                  %i.icon-caret-right
+                  %span
+                    Lentes Future X   
+              %li
+                %a{href: admin_path(5)}
+                  %i.icon-caret-right
+                  %span
+                    Materiales  
+              %li
+                %a{href: admin_path(6)}
+                  %i.icon-caret-right
+                  %span
+                    Tipos de Lentes                  
                     
 
       %li
-        %a{href: 'buttons_and_icons.html'}
-          %i.icon-star
+        %a{href: admin_messages_path}
+          %i.icon-envelope
           %span
-            Ordenes
+            Mensajes
       
-      %li
-        %a{class: 'dropdown-collapse', href: '#'}
-          %i.icon-folder-open-alt
-          %span
-            Four level dropdown
-          %i.icon-angle-down.angle-down
-        
-        %ul.nav.nav-stacked
-          %li
-            %a{class: 'dropdown-collapse', href: '#'}
-              %i.icon-caret-right
-              %span
-                Second level
-              %i.icon-angle-down.angle-down
-            
-            %ul.nav.nav-stacked
-              %li
-                %a{class: 'dropdown-collapse', href: '#'}
-                  %i.icon-caret-right
-                  %span
-                    Third level                          
-                  %i.icon-angle-down.angle-down
-                %ul.nav.nav-stacked
-                  %li>
-                    %a{href: '#'}
-                      %i.icon-caret-right
-                      %span
-                        Fourth level                          
-                  %li
-                    %a{ href: '#'}
-                      %i.icon-caret-right
-                      %span
-                        Another fourth level
+     
+/ %li
+/ %a{href: "#"}
+/ %i.icon-caret-right
+/ %span
+/ Revista Online 

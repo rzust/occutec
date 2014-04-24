@@ -14,6 +14,8 @@ class Admin::StaticsController < ApplicationController
 
   def edit_promotion
     page = Page.find_by_name("promotions")
+    @resource = page
+    @gallery_image = @resource.gallery.gallery_images.build
     @sections = Section.where(page_id: page.id).to_a
   end
   
@@ -27,19 +29,46 @@ class Admin::StaticsController < ApplicationController
     @sections = Section.where(page_id: page.id).to_a
   end
 
+  ### Product's Line ###
+
   def edit_technology
     page = Page.find_by_name("technology")
     @sections = Section.where(page_id: page.id).to_a
   end
 
+  def edit_treatments
+    page = Page.find_by_name("treatments")
+    @sections = Section.where(page_id: page.id).to_a
+  end
+
+  def edit_milling
+    page = Page.find_by_name("milling")
+    @sections = Section.where(page_id: page.id).to_a
+  end
+  
+  def edit_futurex
+    page = Page.find_by_name("futurex")
+    @sections = Section.where(page_id: page.id).to_a
+  end
+
+  def edit_materials
+    page = Page.find_by_name("materials")
+    @sections = Section.where(page_id: page.id).to_a
+  end
+
+  def edit_type_of_glasses
+    page = Page.find_by_name("type_of_glasses")
+    @sections = Section.where(page_id: page.id).to_a
+  end
+
+  def panel
+    @category = Category.find(params[:id])
+  end
+
+  helper_method :products
+  def products(category)
+    @products ||= Product.where(category_id: category)
+  end
+
 end
 
-### Pages ###
-
-# ID # Name 
-# 01 # About Us
-# 02 # Home
-# 03 # Promotions
-# 04 # Events
-# 05 # Contact Us
-# 06 # Digital Technology

@@ -1,4 +1,5 @@
-
+//= require jquery
+//= require jquery_ujs
 //= require admin/jquery/jquery.min
 //= require admin/jquery/jquery.mobile.custom.min
 //= require admin/jquery/jquery-migrate.min

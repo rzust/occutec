@@ -1,234 +1,58 @@
-.slider-inner.margin-bottom-30
-  #da-slider.da-slider
-    .da-slide
-      %h2
-        %i
-          CLEAN &amp; FRESH 
-        %br 
-        %i 
-          FULLY RESPONSIVE 
-        %br 
-        %i 
-          DESIGN
-      %p
-        %i
-          Lorem ipsum dolor amet
-        %br
-        %i 
-          tempor incididunt ut
-        %br 
-        %i 
-          veniam omnis
-      .da-img
-        = image_tag("parallax-slider/img/1.png", alt: "")
+.banner.margin-bottom-20
+  %ul
+    - @slider_images.each do |x|
+      %li
+        = image_tag "#{x.image_url(:main_slider)}", :class => "img-responsive main-slider", :style => "min-height: 200px;"
 
-    .da-slide
-      %h2
-        %i
-          RESPONSIVE VIDEO
-        %br
-        %i
-          SUPPORT AND
-        %br 
-        %i
-          MANY MORE
-      %p
-        %i
-          Lorem ipsum dolor amet
-        %br 
-        %i
-          tempor incididunt ut
-      .da-img
-        %iframe(src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen)
-
-    .da-slide
-      %h2
-        %i
-          USING BEST WEB
-        %br
-        %i
-          SOLUTIONS WITH
-        %br
-        %i
-          HTML5/CSS3
-      %p
-        %i
-          Lorem ipsum dolor amet
-        %br
-        %i
-          tempor incididunt ut
-        %i
-          veniam omnis 
-        .da-img
-          = image_tag("parallax-slider/img/html5andcss3.png", alt: "image01") 
-    .da-arrows
-      %span.da-arrows-prev
-      %span.da-arrows-next  
+/- @gallery_images.each do |image|
+/%li
+/= image_tag "#{image.image_url}", :class => "img-responsive main-slider", :style => "min-height: 200px;"
 
 .container
-  .row
-    .col-md-4
-      .service
-        %i.icon-resize-small.service-icon
-        .desc
-          %h4
-            = @sections[0].title.html_safe
-          %p
-            = @sections[0].body.html_safe
-    
-    .col-md-4
-      .service
-        %i.icon-cogs.service-icon
-        .desc
-          %h4
-            = @sections[1].title.html_safe
-          %p
-            = @sections[1].body.html_safe
-
-    .col-md-4
-      .service
-        %i.icon-plane.service-icon
-        .desc
-          %h4
-            = @sections[2].title.html_safe
-          %p
-            = @sections[2].body.html_safe  
-
-  .headline
-    %h2
-      Recent Works
-  .row.margin-bottom-60
-    .col-md-3.col-sm-6
-      .thumbnails.thumbnail-style.thumbnail-kenburn
-        .thumbnail-img
-          .overflow-hidden
-            %img.img-responsive{src:"assets/img/main/2.jpg", alt:""}
-            %a.btn-more.hover-effect{href:"#"}
-              read more
-        .caption
-          %h3
-            %a.hover-effect{href:"#"}
-              Project One
-          %p
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
-              
-    .col-md-3.col-sm-6
-      .thumbnails.thumbnail-style.thumbnail-kenburn
-        .thumbnail-img
-          .overflow-hidden
-            %img.img-responsive{src:"assets/img/main/3.jpg", alt:""}
-            %a.btn-more.hover-effect{href: "#"}
-              read more +
-        .caption
-          %h3
-            %a.hover-effect{href: "#"}
-              Project Two
-          %p
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
-              
-    .col-md-3.col-sm-6
-      .thumbnails.thumbnail-style.thumbnail-kenburn
-        .thumbnail-img
-          .overflow-hidden
-            %img.img-responsive{src:"assets/img/main/2.jpg", alt:""}
-            %a.btn-more.hover-effect{href:"#"}
-              read more
-        .caption
-          %h3
-            %a.hover-effect{href:"#"}
-              Project One
-          %p
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
-              
-    .col-md-3.col-sm-6
-      .thumbnails.thumbnail-style.thumbnail-kenburn
-        .thumbnail-img
-          .overflow-hidden
-            %img.img-responsive{src:"assets/img/main/3.jpg", alt:""}
-            %a.btn-more.hover-effect{href: "#"}
-              read more +
-        .caption
-          %h3
-            %a.hover-effect{href: "#"}
-              Project Two
-          %p
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.
-
-
-
-
-
-
-
   #clients-flexslider.flexslider.home.clients
     .headline
       %ul.slides
-        %li
-          %a
-            =image_tag("logos/4_WAVE-2.0.jpg", alt: "" )
-            =image_tag("logos/4_WAVE-2.0.jpg", class: "color-img", alt: "")
+        - @images.each do |url|
+          %li
+            %a
+              =image_tag("#{url}", :class => "grayscale", alt: "" )
+              =image_tag("#{url}", class: "color-img", alt: "")
 
-        %li
-          %a
-            =image_tag("logos/5_DDV.jpg", alt: "" )
-            =image_tag("logos/5_DDV.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/adaptar-ds.jpg", alt: "" )
-            =image_tag("logos/adaptar-ds.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/logo-nuevo-transitions.jpg", alt: "" )
-            =image_tag("logos/logo-nuevo-transitions.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/Ovation-Digital.jpg", alt: "" )
-            =image_tag("logos/Ovation-Digital.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/ovation-Ds.jpg", alt: "" )
-            =image_tag("logos/ovation-Ds.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/Varilux-Physio-360-NE.jpg", alt: "" )
-            =image_tag("logos/Varilux-Physio-360-NE.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/Varilux-Physio-Drx.jpg", alt: "" )
-            =image_tag("logos/Varilux-Physio-Drx.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/Essilor-Advans.jpg", alt: "" )
-            =image_tag("logos/Essilor-Advans.jpg", class: "color-img", alt: "")
-        %li
-          %a
-            =image_tag("logos/4_WAVE-2.0.jpg", alt: "" )
-            =image_tag("logos/4_WAVE-2.0.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/5_DDV.jpg", alt: "" )
-            =image_tag("logos/5_DDV.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/adaptar-ds.jpg", alt: "" )
-            =image_tag("logos/adaptar-ds.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/logo-nuevo-transitions.jpg", alt: "" )
-            =image_tag("logos/logo-nuevo-transitions.jpg", class: "color-img", alt: "")
-
-        %li
-          %a
-            =image_tag("logos/Ovation-Digital.jpg", alt: "" )
-            =image_tag("logos/Ovation-Digital.jpg", class: "color-img", alt: "")
        
+:javascript
+
+      if(window.chrome) {
+        $('.banner li').css('background-size', '100% 100%');
+      }
+      
+      $('.banner').unslider({
+        fluid: true,
+        dots: true,
+        speed: 1000
+      });
+    
+      //  Find any element starting with a # in the URL
+      //  And listen to any click events it fires
+      $('a[href^="#"]').click(function() {
+        //  Find the target element
+        var target = $($(this).attr('href'));
+        
+        //  And get its position
+        var pos = target.offset(); // fallback to scrolling to top || {left: 0, top: 0};
+        
+        //  jQuery will return false if there's no element
+        //  and your code will throw errors if it tries to do .offset().left;
+        if(pos) {
+          //  Scroll the page
+          $('html, body').animate({
+            scrollTop: pos.top,
+            scrollLeft: pos.left
+          }, 1000);
+        }
+        
+        //  Don't let them visit the url, we'll scroll you there
+        return false;
+      });
+      
+      var GoSquared = {acct: 'GSN-396664-U'};
+    

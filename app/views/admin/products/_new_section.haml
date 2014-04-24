@@ -1,0 +1,13 @@
+
+%hr
+.row
+  .col-sm-2
+  .col-sm-8
+    .form-group
+      = label_tag "Título"
+      = text_field_tag "new_section[#{@counter}][title]", "", :class => "form-control"
+    .form-group
+      = label_tag "Descripción"
+      = text_area_tag("new_section[#{@counter}][body]", "", rows: '10', :class => "form-control wysihtml5", id: "body")
+    .form-group
+      = file_field_tag("new_section[#{@counter}][image]", :class => "col-md-12 form-control") 

@@ -3,10 +3,10 @@ Ocutec::Application.routes.draw do
   
   root 'statics#index'
 
-  get 'services'    => 'statics#services'
+  # get 'services'    => 'statics#services'
   get 'about_us'    => 'statics#about_us'
   get 'promotions'  => 'statics#promotions'
-  get 'events'    => 'statics#events'
+  # get 'events'    => 'statics#events'
   get 'magazine'    => 'statics#magazine'
   get 'contact_us'  => 'statics#contact_us'
   
@@ -17,6 +17,12 @@ Ocutec::Application.routes.draw do
   get 'futurex'  => 'statics#futurex'
   get 'type_of_glasses'  => 'statics#type_of_glasses'
 
+  resources :products
+  resources :messages
+  resources :events do 
+    resources :event_images
+  end
+  
   namespace :admin do
     root 'dashboard#index'
 
@@ -28,12 +34,53 @@ Ocutec::Application.routes.draw do
     get  'edit_contact_us'              => 'statics#edit_contact_us'
     
     get  'edit_technology'              => 'statics#edit_technology'
+    get  'edit_treatments'              => 'statics#edit_treatments'
+    get  'edit_milling'                 => 'statics#edit_milling'
+    get  'edit_futurex'                 => 'statics#edit_futurex'
+    get  'edit_materials'               => 'statics#edit_materials'
+    get  'edit_type_of_glasses'         => 'statics#edit_type_of_glasses'
 
     post 'update_sections'              => 'sections#update_sections'
 
+
+    get 'panel/:id' => 'statics#panel'
+
     resources :pages do
+      resources :gallery_images
       resources :sections
     end
+
+    resources :messages
+    resources :contacts do
+      collection do 
+        get 'edit_main'
+      end
+    end
+    resources :products do 
+      resources :gallery_images
+      collection do
+        get 'add_section'
+      end
+      member do
+        get 'images_panel'
+      end
+    end
+    resources :main_slider_images do
+      collection do
+        get 'panel'
+      end
+    end
+    resources :gallery_images
+
+    resources :events do
+      resources :event_images
+      member do 
+        get 'images_panel'
+      end
+    end
+
+    resources :event_images
+    
     resources :users do
       collection do
         get 'administrators'
@@ -84,10 +131,5 @@ Ocutec::Application.routes.draw do
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  get '*_page' => 'statics#materials_page'
 end

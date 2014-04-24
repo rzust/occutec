@@ -1,0 +1,59 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-group
+        %span
+          Eventos
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+              
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Eventos
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Eventos
+        .actions
+          %a{href: new_admin_event_path, :class => "btn btn-xs btn-link"}
+            %i.icon-plus
+            %span
+              Agregar
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped{style: 'margin-bottom:0;'}
+              %thead  
+                %tr
+                  %th
+                    Nombre
+                  %th
+                    Fecha
+                  %th
+                    Creado el:
+                  %th
+                    Acciones
+              %tbody
+                - events.each do |x|
+                  %tr{id: x.id}
+                    %td= x.name                    
+                    %td= x.date
+                    %td= x.created_at
+                    %td
+                      = link_to "Show", admin_event_path(x),      :class => "btn btn-primary btn-xs"
+                      = link_to "Edit", edit_admin_event_path(x),  :class => "btn btn-warning btn-xs"
+                      = link_to "Delete", admin_event_path(x), method: :delete, :class => "btn btn-danger btn-xs", remote: true
+
+
+
+
+
+
+

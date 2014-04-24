@@ -30,6 +30,51 @@
           Edición de Página: Tecnología Digital
       .box-content
         %div
+          %form{action: '//jquery-file-upload.appspot.com/', enctype: 'multipart/form-data', id: 'fileupload', method: 'POST'}
+            .row.fileupload-buttonbar
+              .col-sm-7
+                %span.btn.btn-success.fileinput-button
+                  %i.icon-plus.icon-white
+                  %span
+                    Add files...
+                  %input{ 'data-bfi-disabled'=>'', multiple: '', name: 'files[]', type: 'file' }
+                
+                %button.btn.btn-primary.start{ type: 'submit' }
+                  %i.icon-upload.icon-white
+                  %span
+                    Start upload
+                
+                %button.btn.btn-warning.cancel{ type: 'reset' }
+                  %i.icon-ban-circle.icon-white
+                  %span
+                    Cancel upload
+                
+                %button.btn.btn-danger.delete{ type: 'button' }
+                  %i.icon-trash.icon-white
+                  %span
+                    Delete
+                
+                %input.toggle{ type: 'checkbox' }
+              
+              .col-sm-5.fileupload-progress.fade
+                .progress.progress-success.progress-striped.active{ 'aria-valuemax' => '100', 'aria-valuemin' => '0', role: 'progressbar' }
+                  .bar{ style: 'width:0%;' }
+                
+                .progress-extended
+              
+            
+            .fileupload-loading
+            %br
+            %table.table.table-striped{ role: 'presentation' }
+              %tbody.files{ 'data-target' => '#modal-gallery', 'data-toggle' => 'modal-gallery' }
+            
+
+
+
+
+
+
+        %div
           = form_tag(admin_update_sections_path, method: "POST", :class => "form form-horizontal", style: "margin-bottom: 0;", multipart: true) do
             %input{name: "page_id", type: "hidden", value: "#{@sections.first.page_id}"}
             - @sections.each do |x|
@@ -48,13 +93,13 @@
                                 %i
 
                           .box-content
+                            - if x.has_title?  
+                              .form-group
+                                .col-md-2
+                                  = label_tag "Título"
+                                .col-md-10
+                                  = text_field_tag("sections[section_#{x.id}][title]", "#{x.title}", :class => "col-md-12 form-control")
                             = text_area_tag("sections[section_#{x.id}][body]", "#{x.body}", rows: '10', :class => "form-control wysihtml5", id: "body")
-                - if x.has_title?  
-                  .form-group
-                    .col-md-2
-                      = label_tag "Título"
-                    .col-md-10
-                      = text_field_tag("sections[section_#{x.id}][title]", "#{x.title}", :class => "col-md-12 form-control")
                 - if x.has_image?  
                   .form-group
                     - if !x.image.nil?
@@ -67,9 +112,6 @@
                     .col-md-12
                       = file_field_tag("sections[section_#{x.id}][image]", :class => "col-md-12 form-control") 
 
-
-
-
             .form-actions.form-actions-padding-sm
               .row
                 .col-md-10.col-md-offset-2
@@ -77,7 +119,72 @@
                     %i.icon-save
                       Save
 
-
-
-
-  
+:javascript
+  $(document).ready(function(){
+    $('#fileupload').fileupload({
+        filesContainer: $('tbody.files'),
+        uploadTemplateId: null,
+        downloadTemplateId: null,
+        uploadTemplate: function (o) {
+            var rows = $();
+            $.each(o.files, function (index, file) {
+                var row = $('<tr class="template-upload fade">' +
+                    '<td><span class="preview"></span></td>' +
+                    '<td><p class="name"></p>' +
+                    '<div class="error"></div>' +
+                    '</td>' +
+                    '<td><p class="size"></p>' +
+                    '<div class="progress"></div>' +
+                    '</td>' +
+                    '<td>' +
+                    (!index && !o.options.autoUpload ?
+                        '<button class="btn btn-primary start" disabled><i class="icon-upload icon-white"></i><span>Start</span></button>' : '') +
+                    (!index ? '<button class="btn btn-warning cancel"><i class="icon-ban-circle icon-white"></i><span>Cancel</span></button>' : '') +
+                    '</td>' +
+                    '</tr>');
+                row.find('.name').text(file.name);
+                row.find('.size').text(o.formatFileSize(file.size));
+                if (file.error) {
+                    row.find('.error').text(file.error);
+                }
+                rows = rows.add(row);
+            });
+            return rows;
+        },
+        downloadTemplate: function (o) {
+            var rows = $();
+            $.each(o.files, function (index, file) {
+                var row = $('<tr class="template-download fade">' +
+                    '<td><span class="preview"></span></td>' +
+                    '<td><p class="name"></p>' +
+                    (file.error ? '<div class="error"></div>' : '') +
+                    '</td>' +
+                    '<td><span class="size"></span></td>' +
+                    '<td><button class="delete">Delete</button></td>' +
+                    '</tr>');
+                row.find('.size').text(o.formatFileSize(file.size));
+                if (file.error) {
+                    row.find('.name').text(file.name);
+                    row.find('.error').text(file.error);
+                } else {
+                    row.find('.name').append($('<a></a>').text(file.name));
+                    if (file.thumbnailUrl) {
+                        row.find('.preview').append(
+                            $('<a></a>').append(
+                                $('<img>').prop('src', file.thumbnailUrl)
+                            )
+                        );
+                    }
+                    row.find('a')
+                        .attr('data-gallery', '')
+                        .prop('href', file.url);
+                    row.find('.delete')
+                        .attr('data-type', file.delete_type)
+                        .attr('data-url', file.delete_url);
+                }
+                rows = rows.add(row);
+            });
+            return rows;
+        }
+    });
+  });

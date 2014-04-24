@@ -1,0 +1,72 @@
+
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Contacto
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+          %li.separator
+            %i.icon-angle-right
+          %li
+            %a{href: admin_contacts_path}
+              Contactos
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Contacto
+
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-edit
+          Editar Contacto
+      .box-content.box-double-padding
+        = form_for [:admin, contact], :html => {:class => "form", :multipart => true} do |f|
+          
+          %fieldset
+            .row
+              .col-sm-2
+              .col-sm-8
+                .form-group
+                  = f.label "Nombre"
+                  = f.text_field :name, :class => "form-control"
+                .form-group
+                  = f.label "E-mail"
+                  = f.text_field :email1, :class => "form-control"
+                .form-group
+                  = f.label "E-mail Secundario"
+                  = f.text_field :email2, :class => "form-control"
+                .form-group
+                  = f.label "Puesto"
+                  = f.text_field :position, :class => "form-control"
+                .form-group
+                  = f.label "Descripción"
+                  = f.text_field :description, :class => "form-control"
+                .form-group
+                  = f.label "Provincia"
+                  = f.text_field :state, :class => "form-control"
+                .form-group
+                  = f.label "Teléfono 1"
+                  = f.text_field :phone1, :class => "form-control"
+                .form-group
+                  = f.label "Teléfono 2"
+                  = f.text_field :phone2, :class => "form-control"
+                .form-group
+                  = f.label "Teléfono 3"
+                  = f.text_field :phone3, :class => "form-control"
+
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-5
+                = f.submit "Guardar", :class => "btn btn-primary btn-lg"
+
+  

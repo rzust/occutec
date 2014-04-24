@@ -41,7 +41,7 @@
                     Acciones
               %tbody
                 - access_requests.each do |x|
-                  %tr
+                  %tr{id: x.id}
                     %td= x.company
                     %td= x.legal_code
                     %td= x.contact

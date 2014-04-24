@@ -1,0 +1,57 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Mensaje:
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+          %li.separator
+            %i.icon-angle-right
+          %li
+            %a{href: admin_messages_path}
+              Mensajes
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Mensaje  
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-user
+          Mensaje
+      .box-content.box-double-padding
+        %form.form
+          %fieldset
+            .col-sm-2
+            .col-sm-8
+              .form-group
+                %label 
+                  Nombre:
+                %span.form-control
+                  = message.name
+              .form-group
+                %label 
+                  E-mail:
+                %span.form-control
+                  = message.email
+              .form-group
+                %label 
+                  Mensaje
+                %textarea.form-control{rows: 10}
+                  = message.message
+
+
+                  
+
+
+          
+
+     

@@ -3,15 +3,10 @@
   .container
     %h1.pull-left
       Contáctenos
-    %ul.pull-right.breadcrumb
-      %li 
-        = link_to "Inicio", root_path
-          
-      %li.active
-        Contáctenos
+
 
 .margin-bottom-40
-  #single_map{style: "width:100%; height:300px;", "data-address"=>"Jr. Manuel Irribarren 1325 Surquillo - Lima Perú", "data-iconrel"=>"assets/pin_es.png", "data-zoom"=>"14"}
+  #single_map{style: "width:100%; height:300px;", "data-address"=>"#{@main_contact.address1}", "data-iconrel"=>"assets/pin_es.png", "data-zoom"=>"14"}
 
 .container
 
@@ -23,27 +18,21 @@
       %p
         
       %br
-      %form
-        %label
-          Nombre
+      = form_for @message do |f|
+        = f.label "Nombre"
         .row.margin-bottom-20
           .col-md-7.col-md-offset-0
-            %input{type: "text", class: "form-control"}
+            = f.text_field :name, :class => "form-control"
         
-        %label
-          Email 
-          %span.color-red
-            *
+        = f.label "Email"
         .row.margin-bottom-20 
           .col-md-7.col-md-offset-0 
-            %input{type: "text", class: "form-control"}
+            = f.text_field :email, :class => "form-control"
         
-        %label
-          Mensaje
+        = f.label "Mensaje"
         .row.margin-bottom-20 
           .col-md-11.col-md-offset-0 
-            %textarea{rows: "8", class: "form-control"}
-            
+            = text_area_tag("message[message]", "", rows: '8', :class => "form-control")           
         
         %p
           %button{type: "submit", class: "btn-u"}
@@ -58,15 +47,15 @@
         %li
           %a
             %i.icon-home
-            Jr. Manuel Irribarren 1325 Surquillo - Lima Perú
+            = @main_contact.address1
         %li
-          %a{href: "mailto:servicioalcliente@ocutec.com.pe"}
+          %a{href: "mailto:#{@main_contact.email1}"}
             %i.icon-envelope-alt
-            servicioalcliente@ocutec.com.pe
+            = @main_contact.email1
         %li
           %a
             %i.icon-phone-sign
-            618-5555
+            = @main_contact.phone1
 
       .headline 
         %h2
@@ -75,267 +64,243 @@
         %li
           %strong
             Lunes-Viernes:
-          9am a 6pm
+          = @main_contact.week_available
         %li
           %strong
             Sabado:
-          9am a 1pm
+          = @main_contact.saturday_available
         %li
           %strong
             Domingo:
-          No hay atención
+          = @main_contact.sunday_available
 
       .headline 
         %h2
           Estamos en:
       %ul.list-unstyled 
-        %li
-          %i.icon-ok.color-green
-          Lima
-        %li
-          %i.icon-ok.color-green
-          Trujillo
-        %li
-          %i.icon-ok.color-green
-          Arequipa
+        - @states.each do |x|
+          %li
+            %i.icon-ok.color-green
+            = x.upcase
+
+  - @states.each do |x|
+    - counter = 4
+    .headline
+      %h2
+        = x.upcase
+    - count = @contacts["#{x}"].count
+    - @contacts["#{x}"].each_with_index do |k, i|
+      - if counter/4 == 1
+        - counter = 0
+        <div class="row team">
+      - else
+        - counter += 1
+      
+      .col-sm-3
+        .thumbnail-style
+          %h3
+            %a
+              = k.name
+            - if !k.position.empty?
+              %small
+                = k.position
+          - if !k.description.empty?  
+            %p
+              = k.description
+          %ul.list-unstyled.who.margin-bottom-30 
+            - if !k.email1.empty?
+              %li
+                %a{href: "mailto:#{k.email1}"}
+                  %i.icon-envelope-alt
+                  = k.email1
+            - if !k.email2.empty?
+              %li
+                %a{href: "mailto:#{k.email2}"}
+                  %i.icon-envelope-alt
+                  = k.email2
+            - if !k.phone1.empty?
+              %li
+                %a
+                  %i.icon-phone-sign
+                  = k.phone1
+            - if !k.phone2.empty?
+              %li
+                %a
+                  %i.icon-phone-sign
+                  = k.phone2
+            - if !k.phone3.empty?
+              %li
+                %a
+                  %i.icon-phone-sign
+                  = k.phone3
+
+      - if counter == 3 || (i+1) == count
+        - counter += 1
+        </div>
+
+:javascript
+
+
   
-  .headline
-    %h2
-      Lima
-  .row.team
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Erick Aguilar Soto
-          %small
-            Representante de Ventas
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:eaguilar@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              eaguilar@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              99-405-7856
-          %li
-            %a
-              %i.icon-phone-sign
-              405*7856 (Nextel)
+  var map;                                  // Map Variable for Google Maps API (Property Locations)  
+  var office_map;                               // Map Variable for Google Maps API (Office location)    
 
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Karol Sanchez Figueroa
-          %small
-            Representante de Ventas
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:ksanchez@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              ksanchez@ocutec.com.pe 
-          %li
-            %a
-              %i.icon-phone-sign
-              99-816-6581
-          %li
-            %a
-              %i.icon-phone-sign
-              816*6581 (Nextel)
+  jQuery(document).ready(function(){
+    if ($("#renting-map-js").length > 0){
+      generateMapMarkers ();
+    }
 
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Alvaro Jacobo
-          %small
-            Representante de Ventas
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:ajacobo@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              ajacobo@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              99-423-3396
-          %li
-            %a
-              %i.icon-phone-sign
-              423*3396 (Nextel)
+    // Ini GPS Converter  
+    
+    GPSconverter();
+  })
+  /* ---------------------------------------------------------------------- */
+  /*  Generate Google Map Markers
+  /* ---------------------------------------------------------------------- */
+    
+  
+   
+  /* end Google Map Pins */
+  function generateMapMarkers () {
 
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Guisell Pinto Muratta
-          %small
-            Consultora Transitions
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:gpinto@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              gpinto@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              99-835-0992
-          %li
-            %a
-              %i.icon-phone-sign
-              835*0992 (Nextel)
+      var map_locations = [],
+        container = document.getElementById('renting-map-js'),
+        c = $(container).children().get(),
+        l = c.length,
+        i, obj, p, m, j;
+      
+      //loop through all child nodes
+      for (i = 0; i < l; i++) {
+        obj = {};
+        obj.img = c[i].getElementsByTagName('img')[0].src;
+        p = c[i].getElementsByTagName('p');
+        m = p.length;
+        for (j = 0; j < m; j++)
+        obj[p[j].className] = p[j].firstChild.nodeValue;
+        map_locations[i] = obj;
+        //console.log(obj);
+      }
+      
+      //print all arrays
+      //console.log(map_locations);
+      
+      //ini google map plot
+      google.maps.event.addDomListener(window, 'load', initializeMap(map_locations));
+  }
 
-  .row.team
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Rocio Robles Saldarriaga
-          %small
-            Consultora FutureX
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:rrobles@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              rrobles@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              99-103-4517
-          %li
-            %a
-              %i.icon-phone-sign
-              103*4517 (Nextel)
+  /* end google map markers */
 
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Carmen Nagahama Yara
-          %small
-            Jefe Servicio al Cliente
-        %p
-          Oficina Surquillo
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:servicioalcliente@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              servicioalcliente@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              618-5555
-          %li
-            %a
-              %i.icon-phone-sign
-              618-5566 (Fax)
-          %li
-            %a
-              %i.icon-phone-sign
-              812*7792 | 812*7323 (Nextel)
+  /* ---------------------------------------------------------------------- */
+  /*  Convert normal address to google map coordinates
+  /* ---------------------------------------------------------------------- */
+  
+  function GPSconverter() {
+    if($('#single_map').length == 0) 
+    return;
+    var $single_map =  $("#single_map");
+    var theAddress = $single_map.attr('data-address');
+    var iconRel =   $single_map.attr('data-iconrel');
+    var zoomLevel = parseInt($single_map.attr('data-zoom'));
+    var mygc = new google.maps.Geocoder(theAddress);
+    mygc.geocode({'address' : theAddress}, function(results, status){
+      var mLat = results[0].geometry.location.lat();
+      var mLong = results[0].geometry.location.lng();
+      //console.log(mLat, mLong, iconRel, zoomLevel)
+      initializeOneMap(mLat, mLong, iconRel, zoomLevel)
+    });
+  }
 
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Susana Tokuda Kina
-          %small
-            Servicio al Cliente
-        %p
-          Oficina Surquillo
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:stokuda@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              stokuda@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              428-4598
-          %li
-            %a
-              %i.icon-phone-sign
-              822*6180  (Nextel)
-             
-  .headline
-    %h2
-      Trujillo
-  .row.team
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Oficina Trujillo
-          %small
-            
-        %p
-          
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:ventastrujillo@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              ventastrujillo@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              4-420-8907
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Susana Luna Victoria
-          %small
-            Representante de Ventas
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a
-              %i.icon-phone-sign
-              99-423-3405
-          %li
-            %a
-              %i.icon-phone-sign
-              423*3405 (Nextel)
+  /* end convert */
 
-  .headline
-    %h2
-      Arequipa
-  .row.team
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Oficina Arequipa
-          %small
-            
-        %p
-          
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a{href: "mailto:ventasarequipa@ocutec.com.pe"}
-              %i.icon-envelope-alt
-              ventasarequipa@ocutec.com.pe
-          %li
-            %a
-              %i.icon-phone-sign
-              5-420-3880
-    .col-sm-3
-      .thumbnail-style
-        %h3
-          %a
-            Cesar Oviedo Carazas
-          %small
-            Representante de Ventas
-        %ul.list-unstyled.who.margin-bottom-30 
-          %li
-            %a
-              %i.icon-phone-sign
-              99-405-7861
-          %li
-            %a
-              %i.icon-phone-sign
-              405*7861 (Nextel)
+  /* ---------------------------------------------------------------------- */
+  /*  Plot single map pin
+  /* ---------------------------------------------------------------------- */
+    
+  function initializeOneMap(mLat, mLong, iconRel, zoomLevel) {
+    var myOptions = {
+      zoom: zoomLevel,
+      center: new google.maps.LatLng(mLat, mLong),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      draggable: true,
+      disableDoubleClickZoom: false,
+      zoomControl: false,
+      overviewMapControl: false,
+      streetViewControl: false,
+      mapTypeControl: false,
+      scrollwheel: true,
+      disableDefaultUI: false
+    };
+    var office_map = new google.maps.Map(document.getElementById('single_map'), myOptions);
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(mLat, mLong),
+      map: office_map,
+      icon: iconRel
+    });
+  }
+
+  /* end single map plot*/
+
+  /* ---------------------------------------------------------------------- */
+  /*  Google Map API: Plant Pins
+   * 
+   *  For control options please go to:
+   *  https://developers.google.com/maps/documentation/javascript/controls
+   *
+  /* ---------------------------------------------------------------------- */  
+    
+  function initializeMap(map_locations) {
+    if($("#map_div").length == 0)
+      return;
+    $thisMap = $("#google-map-js");
+    var latc = $thisMap.attr('data-lat');
+    var lngc = $thisMap.attr('data-lng');
+    var zoomc = parseInt($thisMap.attr('data-zoom'));
+    //console.log(latc, lngc);
+    var iniLat = new google.maps.LatLng(latc, lngc);
+    var mapOptions = {
+      zoom: zoomc,
+      center: iniLat,
+      //disableDefaultUI: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var infowindow = new google.maps.InfoWindow();
+    var map = new google.maps.Map(document.getElementById("map_div"), mapOptions);
+    $.each(map_locations, function(key, value) { 
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(value['lat'], value['lng']),
+        map: map,
+        icon: "img/pin/marker.png",
+        scrollwheel: false,
+        streetViewControl:true,
+        title: value['title']
+      });
+      
+      var link = "link";
+      google.maps.event.addListener( marker, 'click', function() {
+        // Setting the content of the InfoWindow
+        var content = '<div id="info" style="width:300px; height:100px;"><div>' + 
+                '<div style="display:inline-block; width:86px; verticle-align:top; float:left;"><img src='+value['img']+' class="thumbnail" style="width:80%; verticle-align:top;" /></div>' + 
+                '<div style="display:inline-block; width:200px; float:left;"><h6>' + 
+                value['prop-title'] + 
+                '</h6><b>' + 
+                value['street'] + 
+                '</b><br/>' + 
+                '<strong>&#36;' + 
+                value['price'] + 
+                '</strong>' + 
+                '<p><a href="property.html" class="btn btn-mini pull-right">Read More</a></p>' + 
+                '</div></div></div>';
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+      });
+      
+    });
+   }
+  $(window).load(function(){
+    //CSS 100% with borders add extra 2px width, so we take out the extra 2px
+    $("#map_div").width(($(".google-map-js").width()-2+'px'));
+
+  });
 
 
-              
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302063056) do
+ActiveRecord::Schema.define(version: 20140424021146) do
 
   create_table "access_requests", force: true do |t|
     t.string   "company"
@@ -28,6 +28,75 @@ ActiveRecord::Schema.define(version: 20140302063056) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.boolean  "main",               default: false
+    t.string   "name"
+    t.string   "position"
+    t.string   "description"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "email1"
+    t.string   "email2"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "phone3"
+    t.string   "state"
+    t.string   "week_available"
+    t.string   "saturday_available"
+    t.string   "sunday_available"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_images", force: true do |t|
+    t.integer  "event_id"
+    t.string   "image"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "galleries", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "page_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gallery_images", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "image"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "main_slider_images", force: true do |t|
+    t.string   "image"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,6 +125,7 @@ ActiveRecord::Schema.define(version: 20140302063056) do
     t.boolean  "has_title"
     t.boolean  "has_image"
     t.integer  "page_id"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,6 +146,7 @@ ActiveRecord::Schema.define(version: 20140302063056) do
     t.string   "company"
     t.string   "phone"
     t.string   "address"
+    t.boolean  "is_superadmin"
     t.boolean  "is_admin"
     t.datetime "created_at"
     t.datetime "updated_at"

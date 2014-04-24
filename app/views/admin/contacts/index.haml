@@ -1,0 +1,62 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-group
+        %span
+          Contactos
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+              
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Contactos
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Contactos
+        .actions
+          %a{href: new_admin_contact_path, :class => "btn btn-xs btn-link"}
+            %i.icon-plus
+            %span
+              Agregar
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped{style: 'margin-bottom:0;'}
+              %thead  
+                %tr
+                  %th
+                    Nombre
+                  %th
+                    E-mail
+                  %th
+                    Teléfono
+                  %th
+                    Provincia
+                  %th
+                    Acciones
+              %tbody
+                - contacts.each do |x|
+                  %tr{id: x.id}
+                    %td= x.name                    
+                    %td= x.email1
+                    %td= x.phone1
+                    %td= x.state
+                    %td
+                      = link_to "Show", admin_contact_path(x),      :class => "btn btn-primary btn-xs"
+                      = link_to "Edit", edit_admin_contact_path(x),  :class => "btn btn-warning btn-xs"
+                      = link_to "Delete", admin_contact_path(x), method: :delete, :class => "btn btn-danger btn-xs", remote: true
+
+
+
+
+
+
+

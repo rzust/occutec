@@ -1,0 +1,20 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          = "Productos" if @resource.class.name == "Product"
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-plus
+          Imágenes
+      .box-content.box-double-padding
+        = render 'uploader'
+        %hr
+        - id = @resource.category_id.to_i
+        = link_to "Terminar", admin_path(id), :class => "btn btn-medium btn-primary" if @resource.class.name == "Product"

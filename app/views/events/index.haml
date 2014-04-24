@@ -1,0 +1,38 @@
+.breadcrumbs.margin-bottom-20
+  .container
+    %h1.pull-left
+      Eventos
+
+.container    
+  .gallery-page
+    - counter = 4
+    - count = @events.count
+    - @events.each_with_index do |event, i|
+
+      - if counter/4 == 1
+        - counter = 0
+        <div class="row margin-bottom-20">
+      - else
+        - counter += 1
+
+      .col-md-3.col-sm-6
+        .thumbnail-style
+          %a{title: "#{event.name}", href: event_event_images_path(event)}
+            = image_tag "#{event.event_images.take.image_url(:thumb)}", :class => "img-responsive" if !event.event_images.empty?
+          %h3
+            = event.name
+          %p
+            = event.description
+      - if counter == 3 || (i+1) == count
+        - counter += 1
+        </div>
+
+
+
+  %hr.margin-bottom-30
+  = will_paginate @events
+:javascript
+  // jQuery(document).ready(function() {
+  //     App.init();
+  //     App.initFancybox();
+  // });

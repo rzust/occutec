@@ -1,0 +1,55 @@
+
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Producto
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-plus
+          Producto
+      .box-content.box-double-padding
+        = form_for [:admin, @product], :html => {:class => "form", :multipart => true} do |f|
+          
+          %fieldset
+            .row
+              .col-sm-2
+              .col-sm-8
+                .form-group
+                  = f.label "Nombre"
+                  = f.text_field :name, :class => "form-control"
+                .form-group
+                  = f.label "Descripción"
+                  = text_area_tag("product[description]", "", rows: '10', :class => "form-control wysihtml5", id: "body")
+                .form-group
+                  = f.label "Categoría"
+                  = f.select :category_id, @categories.collect{|p| [ p.name, p.id ] }, {}, :class => "form-control select2"           
+            .row
+              .col-sm-4
+              .col-sm-4
+                .form-group
+                  = file_field_tag("product[logo]", :class => "col-md-12 form-control") 
+            .row
+              .col-sm-10
+                %h2 
+                  Secciones
+                .actions
+                  = link_to add_section_admin_products_path(:counter => @counter), remote: true, id: "add_section" do
+                    %i.icon-plus
+                    Agregar
+            #sections
+              = render "sections"
+
+
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-5
+                = f.submit "Guardar", :class => "btn btn-primary btn-lg"
+
+  

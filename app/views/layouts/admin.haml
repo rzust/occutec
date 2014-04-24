@@ -11,13 +11,13 @@
     %meta{content: 'width=device-width', 'initial-scale' => 1, 'maximum-scale' => 1, 'user-scalable' => 'no', name: 'viewport'}
     %meta{content: 'text/html;charset=utf-8', 'http-equiv' => 'content-type'}
     = favicon_link_tag
-    = stylesheet_link_tag    "admin/application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "admin/application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "admin/application", media: "all"
+    = javascript_include_tag "admin/application"
     = csrf_meta_tags
 
     /[if lt IE 9]
-      = javascript_include_tag "admin/ie/html5shiv.js", "data-turbolinks-track" => true
-      = javascript_include_tag "admin/ie/respond.min.js", "data-turbolinks-track" => true
+      = javascript_include_tag "admin/ie/html5shiv.js"
+      = javascript_include_tag "admin/ie/respond.min.js"
     %body.contrast-sea-blue
       = render 'admin/shared/header'
 

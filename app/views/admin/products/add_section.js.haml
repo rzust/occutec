@@ -1,0 +1,4 @@
+$("#sections").append("#{ j render(partial: "new_section", locals: { counter: @counter, variable: 'hola'} ) }");
+url = $("#add_section").attr("href");
+arr = url.split("=")
+$("#add_section").prop("href", arr[0]+"=#{@counter }")

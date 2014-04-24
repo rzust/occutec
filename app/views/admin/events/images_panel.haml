@@ -1,0 +1,19 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Eventos
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-plus
+          Imágenes
+      .box-content.box-double-padding
+        = render 'uploader'
+        %hr
+        = link_to "Terminar", admin_events_path, :class => "btn btn-medium btn-primary" 

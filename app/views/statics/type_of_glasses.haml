@@ -1,7 +1,7 @@
-.breadcrumbs.margin-bottom-40
+.breadcrumbs
   .container
     %h1.pull-left
-      Tipos de Lentes
+      = @sections[0].title.html_safe
     %ul.pull-right.breadcrumb
       %li
         
@@ -14,59 +14,33 @@
       %li.active
         Tipos de Lentes
 
-.row.margin-bottom-40
-  .col-md-12
-    #slide-wrapper
-      #banner
-        .oneByOne_item
-          =image_tag "slider1.jpg"
+/ .row.margin-bottom-40
+/ .col-md-12
+/ #slide-wrapper
+/ #banner
+/ .oneByOne_item
+/ =image_tag "slider1.jpg"
 
-        .oneByOne_item
-          =image_tag "slider2.jpg"
+/ .oneByOne_item
+/ =image_tag "slider2.jpg"
 
 .purchase
   .container
     .row
-      .col-md-12
-        %span
-          Tipos de Lentes
+      .col-md-12          
         %p
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.
+          = @sections[0].body.html_safe
 
 .container
-  .search-blocks.search-blocks-top-sea.margin-bottom-20
-    .row
-      .col-md-4.search-img
-        %a{href: "#"}
-          = image_tag "transitions.jpg", :class => "img-responsive"
-      .col-md-8
-        %h2
+  - products(6).each do |x|
+    .search-blocks.search-blocks-top-sea.margin-bottom-20
+      .row
+        .col-md-4.search-img
           %a{href: "#"}
-            Progresivos
-        %p
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.
-
-  .search-blocks.search-blocks-top-sea.margin-bottom-20
-    .row
-      .col-md-4.search-img
-        %a{href: "#"}
-          = image_tag "transitions.jpg", :class => "img-responsive"
-      .col-md-8
-        %h2
-          %a{href: "#"}
-            Bifocales
-        %p
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.
-
-  .search-blocks.search-blocks-top-sea.margin-bottom-20
-    .row
-      .col-md-4.search-img
-        %a{href: "#"}
-          = image_tag "transitions.jpg", :class => "img-responsive"
-      .col-md-8
-        %h2
-          %a{href: "#"}
-            Monofocales
-        %p
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.
-
+            = image_tag x.logo_url(:logo), :class => "img-responsive" if x.logo
+        .col-md-8
+          %h2
+            %a{href: product_path(x)}
+              = x.name
+          %p
+            = x.description

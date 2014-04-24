@@ -1,0 +1,52 @@
+
+= form_for [:admin, @resource, @gallery_image], :html => {multipart: true, id: "fileupload"} do |f|
+  .row.fileupload-buttonbar
+    .col-sm-7
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span
+          Add files...
+        /%input{ 'data-bfi-disabled'=>'', multiple: '', name: 'files[]', type: 'file' }
+        = f.file_field :image, 'data-bfi-disabled'=>''
+
+
+    
+    .col-sm-5.fileupload-progress.fade
+      .progress.progress-success.progress-striped.active{ 'aria-valuemax' => '100', 'aria-valuemin' => '0', role: 'progressbar' }
+        .bar{ style: 'width:0%;' }
+      
+      /.progress-extended
+    
+  
+  .fileupload-loading
+  %br
+  %table.table.table-striped{ role: 'presentation' }
+    %tbody.files{ 'data-target' => '#modal-gallery', 'data-toggle' => 'modal-gallery' }
+
+:javascript
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+  
+  var project_id = "#{params[:id]}";
+
+
+  $.getJSON($('#fileupload').prop('action'), function (files) {
+    var fu = $('#fileupload').data('blueimpFileupload'), 
+      template;
+    fu._adjustMaxNumberOfFiles(-files.length);
+    console.log(files);
+    template = fu._renderDownload(files)
+      .appendTo($('#fileupload .files'));
+    // Force reflow:
+    fu._reflow = fu._transition && template.length &&
+      template[0].offsetWidth;
+    template.addClass('in');
+    $('#loading').remove();
+  });
+
