@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -50,6 +49,7 @@ gem 'quiet_assets', '~> 1.0.2'
 gem 'unicorn'
 
 group :development do
+  gem 'mysql2'
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rvm'
   gem 'capistrano-rails', '~> 1.1'

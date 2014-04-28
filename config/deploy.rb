@@ -44,7 +44,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # for details of operations
 set(:config_files, %w(
   nginx.conf
-  database.example.yml
+  database-example.yml
   unicorn.rb
   unicorn_init.sh
 ))
@@ -74,6 +74,10 @@ set(:symlinks, [
 # set :keep_releases, 5
 
 namespace :deploy do
+
+  before :deploy, "deploy:check_revision"
+  after 'deploy:setup_config', 'nginx:reload'
+
 
   %w[start stop restart].each do |command|
     desc "#{command} unicorn server"

@@ -10,3 +10,13 @@ def sub_strings(input_string)
   end
   output_string
 end
+
+def config_file(name)
+  puts "hola"
+  if File.exist?((file = "config/deploy/#{fetch(:full_app_name)}/#{name}"))
+    return file
+  elsif File.exist?((file = "config/deploy/shared/#{name}"))
+    return file
+  end
+  return nil
+end
