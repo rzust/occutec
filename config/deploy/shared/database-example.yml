@@ -1,7 +1,7 @@
-development:
-  adapter: mysql2
+production:
+  adapter: postgresql
   encoding: utf8
-  database: ocutec_development
-  username: root
-  password: razm
+  database: ocutec_production
+  username: deploy
+  password: deploy
   host: localhost
