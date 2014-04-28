@@ -24,6 +24,7 @@ gem 'twitter-bootstrap-rails'
 gem "compass-rails", "~> 1.1.2"
 gem 'angularjs-rails'
 gem 'will_paginate'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 
@@ -42,15 +43,19 @@ gem 'mini_magick'
 gem 'carrierwave'
 
 gem 'quiet_assets', '~> 1.0.2'
-# gem 'jquery-fileupload-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+group :development do
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1'
+end
+
+gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
