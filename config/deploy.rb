@@ -83,7 +83,7 @@ namespace :deploy do
     desc "#{command} unicorn server"
     task command do
       on roles(:app), in: :sequence, wait: 5 do
-        sudo "/etc/init.d/unicorn_#{application} #{command}"
+        sudo "/etc/init.d/unicorn_#{fetch(:application)} #{command}"
       end
     end
   end
