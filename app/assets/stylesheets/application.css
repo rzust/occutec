@@ -15,10 +15,10 @@
  *= require responsive
  *= #require flexslider/flexslider
  *= #require parallax-slider/css/parallax-slider
- *= #require fancybox/source/jquery.fancybox
- *= #require slider/animate.min
- *= #require slider/jquery.onebyone
- *= #require slider/responsive-slider
+ *= require fancybox/source/jquery.fancybox
+ *= require slider/animate.min
+ *= require slider/jquery.onebyone
+ *= require slider/responsive-slider
  *= require themes/blue
  *= require themes/headers/header1-blue
  *= require override
