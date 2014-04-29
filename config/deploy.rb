@@ -99,6 +99,17 @@ namespace :deploy do
     end
   end
 
+  desc "reload the database with seed data"
+  task :seed => [:set_rails_env] do
+    on primary (:db) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "db:seed"
+        end
+      end
+    end
+  end
+
   # before  'deploy:setup_config', 'nginx:remove_default_vhost'
   # after   'deploy:setup_config', 'nginx:reload'
   # after   'deploy:publishing', 'deploy:restart'
