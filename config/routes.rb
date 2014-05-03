@@ -44,6 +44,7 @@ Ocutec::Application.routes.draw do
 
 
     get 'panel/:id' => 'statics#panel'
+    get 'edit_section/:id' => 'statics#edit_section'
 
     resources :pages do
       resources :gallery_images
@@ -88,6 +89,7 @@ Ocutec::Application.routes.draw do
       end
     end
     resources :access_requests
+    resources :categories
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

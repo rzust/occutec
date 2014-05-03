@@ -4,7 +4,7 @@ class StaticsController < ApplicationController
     page = Page.find_by_name("home")
     products = Product.all
     @slider_images = MainSliderImage.all
-    @images = products.collect{|x| x.logo_url(:logo)}
+    @images = products.collect{|x| x.logo_url(:small)}
     @sections = page.sections
   end
 
@@ -55,31 +55,37 @@ class StaticsController < ApplicationController
   def technology
     page = Page.find_by_name("technology")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def treatments
     page = Page.find_by_name("treatments")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def milling
     page = Page.find_by_name("milling")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def futurex
     page = Page.find_by_name("futurex")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def materials
     page = Page.find_by_name("materials")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def type_of_glasses
     page = Page.find_by_name("type_of_glasses")
     @sections = page.sections
+    @category = @sections.first.category
   end
 
   def materials_page

@@ -65,6 +65,10 @@ class Admin::StaticsController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def edit_section
+    @category = Category.find(params[:id])
+  end
+
   helper_method :products
   def products(category)
     @products ||= Product.where(category_id: category)

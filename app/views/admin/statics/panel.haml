@@ -1,4 +1,12 @@
-%hr.hr-drouble
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-group
+        %span
+          = @category.name
+      .pull-right
+        = link_to "Editar Página", "/admin/edit_section/#{@category.id}", :class => "btn btn-info"
 
 .row
   .col-sm-12
@@ -7,7 +15,7 @@
         .title
           Productos
         .actions
-          %a{href: new_admin_product_path, :class => "btn btn-xs btn-link"}
+          %a{href: new_admin_product_path(category_id: @category.id), :class => "btn btn-xs btn-link"}
             %i.icon-plus
             %span
               Agregar

@@ -14,10 +14,10 @@
   .row.margin-bottom-30
     .col-md-6.md-margin-bottom-40
       %p
-        = @sections[0].body.html_safe
+        = @sections[0].body.html_safe rescue ""
         
     .col-md-6.md-margin-bottom-40
-      = image_tag @sections[0].image_url.to_s, :class => "fill img-rounded"
+      = image_tag @sections[0].image_url.to_s, :class => "fill img-rounded" 
 
 
 

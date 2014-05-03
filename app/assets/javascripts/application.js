@@ -17,9 +17,9 @@
 //= require bootstrap/js/bootstrap.min
 //= require hover-dropdown.min
 //= require back-to-top
-//= require flexslider/jquery.flexslider-min
-//= require parallax-slider/js/modernizr
-//= require parallax-slider/js/jquery.cslider
+//= #require flexslider/jquery.flexslider-min
+//= #require parallax-slider/js/modernizr
+//= #require parallax-slider/js/jquery.cslider
 //= require slider/jquery.onebyone.min
 //= require slider/jquery.touchwipe.min
 //= require fancybox/source/jquery.fancybox.js

@@ -2,6 +2,11 @@
   .container
     %h1.pull-left
       = @event.name
+    %ul.pull-right.breadcrumb
+      %li
+        = link_to :back do       
+          Regresar
+          %i.icon-undo.icon-round.icon-round-sm
 
 .container    
   .gallery-page
@@ -27,7 +32,7 @@
 
 
 :javascript
-  // jQuery(document).ready(function() {
-  //     App.init();
-  //     App.initFancybox();
-  // });
+  jQuery(document).ready(function() {
+      App.init();
+      App.initFancybox();
+  });

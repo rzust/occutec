@@ -3,7 +3,7 @@ User.create!(email: "admin@admin.com", password: "adminpass", is_admin: true)
 #Create Pages
 Page.create!(name: "home")
 page = Page.create!(name: "about_us")
-page.sections.create!(name: "About", title: "title", body: "body")
+page.sections.create!(name: "About", title: "title", body: "body", has_image: true)
 page = Page.create!(name: "promotions")
 page.create_gallery!
 Page.create!(name: "events")
@@ -11,25 +11,31 @@ Page.create!(name: "contact_us")
 
 #Create Pages & Sections
 page = Page.create!(name: "technology")
-page.sections.create!(name: "Description", title: "title", body: "body")
-page = Page.create!(name: "treatments")
-page.sections.create!(name: "Description", title: "title", body: "body")
+section = page.sections.create!(name: "Description", title: "Tecnología Digital", body: "body")
+section.create_category(name: "Tecnología Digital")
+
 page = Page.create!(name: "milling")
-page.sections.create!(name: "Description", title: "title", body: "body")
+section = page.sections.create!(name: "Description", title: "Tratamientos", body: "body")
+section.create_category(name: "Tallado Convencional")
+
+page = Page.create!(name: "treatments")
+section = page.sections.create!(name: "Description", title: "Tallado Convencional", body: "body")
+section.create_category(name: "Tratamientos")
+
 page = Page.create!(name: "futurex")
-page.sections.create!(name: "Description", title: "title", body: "body")
+section = page.sections.create!(name: "Description", title: "FutureX", body: "body")
+section.create_category(name: "Lentes Future X")
+
 page = Page.create!(name: "materials")
-page.sections.create!(name: "Description", title: "title", body: "body")
+section = page.sections.create!(name: "Description", title: "Materiales", body: "body")
+section.create_category(name: "Materiales")
+
 page = Page.create!(name: "type_of_glasses")
-page.sections.create!(name: "Description", title: "title", body: "body")
+section = page.sections.create!(name: "Description", title: "Tipos de Lentes", body: "body")
+section.create_category(name: "Tipos de Lentes")
 
 #Create Categories
-Category.create!(name: "Tecnología Digital")
-Category.create!(name: "Tallado Convencional")
-Category.create!(name: "Tratamientos")
-Category.create!(name: "Lentes Future X")
-Category.create!(name: "Materiales")
-Category.create!(name: "Tipos de Lentes")
+
 
 #Create Main Contact
 Contact.create!(main: true, address1: "Jr. Manuel Irribarren 1325 Surquillo - Lima Perú", email1: "servicioalcliente@ocutec.com.pe", phone1: "618-5555", week_available: "9am a 6pm", saturday_available: "9am a 1pm", sunday_available: "No hay atención")

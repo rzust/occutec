@@ -120,9 +120,8 @@
    
   jQuery(document).ready(function() {
     App.init();
-    App.initSliders();
-    
-    App.initFancybox();
+    // App.initSliders();
+
 
     $("#banner").oneByOne({                          // the wrapper's name 
       className: 'oneByOne1',                             // the wrapper div's class name of each slider  
@@ -140,6 +139,8 @@
       responsive: true,                         // slider's size with the media query in CSS
       minWidth: 480                           // text is hidden at this width
     });  
+
+
 
     window.setTimeout(function() {
       
