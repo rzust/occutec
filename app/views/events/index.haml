@@ -20,9 +20,9 @@
           %a{title: "#{event.name}", href: event_event_images_path(event)}
             = image_tag "#{event.event_images.take.image_url(:thumb)}", :class => "img-responsive" if !event.event_images.empty?
           %h3
-            = event.name
+            = event.name.html_safe rescue ""
           %p
-            = event.description
+            = event.description.html_safe rescue ""
       - if counter == 3 || (i+1) == count
         - counter += 1
         </div>
