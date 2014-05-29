@@ -5,7 +5,7 @@ set :application, 'ocutec'
 set :repo_url, 'git@github.com:rzust/ocutec.git'
 set :branch, 'master'
 set :stages, ["production"]
-set :deploy_to, '/home/deploy/ocutec'
+set :deploy_to, '/home/deploy/apps/ocutec'
 
 set :pty, true
 set :deploy_via, :remote_cache
