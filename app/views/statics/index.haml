@@ -8,16 +8,31 @@
 /%li
 /= image_tag "#{image.image_url}", :class => "img-responsive main-slider", :style => "min-height: 200px;"
 
-.container
-  #clients-flexslider.flexslider.home.clients
-    .headline
-    %ul.slides
-      - @images.each do |url|
-        %li
-          %a
-            =image_tag(url, :class => "grayscale", alt: "" )
-            =image_tag(url, class: "color-img", alt: "")
 
+.row
+  - @sections.each do |x|
+    .col-md-4
+      .service
+        .desc
+          %h4.center
+            = x.title.html_safe
+          %p.center
+            = x.body.html_safe
+
+
+
+
+- if @images.count > 6
+  .container
+    #clients-flexslider.flexslider.home.clients
+      .headline
+      %ul.slides
+        - @images.each do |url|
+          %li
+            %a
+              =image_tag(url, :class => "grayscale", alt: "" )
+              =image_tag(url, class: "color-img", alt: "")
+  %br           
 
 
 :javascript

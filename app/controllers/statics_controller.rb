@@ -28,19 +28,19 @@ class StaticsController < ApplicationController
     @event_images = EventImage.where(event_id: id).paginate(:page => params[:page])
   end
 
-  def magazine
-    uri = URI('http://search.issuu.com/api/2_0/document')
-    uri.query = URI.encode_www_form({:username => "ocutecmagazine", :responseParams => "*", :sortBy => "epoch desc"})
-    res = Net::HTTP.get_response(uri)
-    if res.is_a?(Net::HTTPSuccess)
-      resp_json = JSON.parse(res.body) 
-      mags = Array.new
-      resp_json["response"]["docs"].each do |x|
-        mags << [x["description"], x["docname"]]
-      end
-      @documents = issuu_get(mags)
-    end
-  end
+  # def magazine
+  #   uri = URI('http://search.issuu.com/api/2_0/document')
+  #   uri.query = URI.encode_www_form({:username => "ocutecmagazine", :responseParams => "*", :sortBy => "epoch desc"})
+  #   res = Net::HTTP.get_response(uri)
+  #   if res.is_a?(Net::HTTPSuccess)
+  #     resp_json = JSON.parse(res.body) 
+  #     mags = Array.new
+  #     resp_json["response"]["docs"].each do |x|
+  #       mags << [x["description"], x["docname"]]
+  #     end
+  #     @documents = issuu_get(mags)
+  #   end
+  # end
 
   def contact_us
     @message = Message.new

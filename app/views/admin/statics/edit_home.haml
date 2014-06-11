@@ -20,30 +20,35 @@
           %li.active
             Inicio
 
-
-.row{"ng-app" => "Ocutec"}
+.row
   .col-sm-12
-    .box
+    .box.bordered-box.blue-border
       .box-header.blue-background
         .title
-          .icon-edit
-          Edición de Página: Inicio
-      .box-content
-        %div{"ng-controller" => "StaticsCtrl"}
-          %form.form.form-horizontal{style: "margin-bottom: 0;", "ng-submit" => "saveSections()"}
-            .form-group{"ng-repeat" => "section in sections"}
-              %input{type: "hidden", "ng-model" => "section.id", value: "{{section.id}}"}
-              %label.col-md-2.control-label
-                {{section.title}}
-              .col-md-10
-                %textarea.col-md-12.form-control{"ng-model" => "section.body", rows: '18'}
-            .form-actions.form-actions-padding-sm
+          %i.icon-edit
+          Editar Secciones
+      .box-content.box-double-padding
+        = form_tag admin_update_home_path, :html => {:class => "form", :multipart => true} do 
+          
+          %fieldset
+            - counter = 0
+            - @sections.each do |x|
+              - counter += 1
               .row
-                .col-md-10.col-md-offset-2
-                  %button.btn.btn-primary{type: 'submit'}
-                    %i.icon-save
-                      Save
+                .col-sm-2
+                  %h3.text-primary
+                    = "Sección #{counter}"
+                .col-sm-8
+                  .form-group
+                    = label_tag "Nombre"
+                    = text_field_tag "section[#{x.id}][title]", x.title, :class => "form-control"
+                  .form-group
+                    = label_tag "Descripción"
+                    = text_area_tag("section[#{x.id}][body]", x.body, rows: '10', :class => "form-control wysihtml5", id: "body")
+                %hr
 
 
-
-
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-5
+                = submit_tag "Guardar", :class => "btn btn-primary btn-lg"
