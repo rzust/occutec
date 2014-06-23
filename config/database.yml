@@ -1,9 +1,9 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: ocutec2_development
+  database: ocutec_development
   username: root
-  password: razm
+  password: chimpance99
   host: localhost
 
 production:

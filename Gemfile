@@ -60,6 +60,6 @@ gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
-gem 'pg', group: :production
+
 
 ruby "2.0.0"
