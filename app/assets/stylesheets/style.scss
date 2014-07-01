@@ -1441,3 +1441,25 @@ ul.blog-tags a:hover i {
 .info-blocks .info-blocks-in p {
 	font-size: 12px;
 }
+
+
+.cartbutton {
+  text-indent:-28px;
+  display:inline-block;
+  color:#94A7AC;
+  font-size:15px;
+  float: right;
+  font-weight:normal;
+  font-style:normal;
+  height:40px;
+  line-height:40px;
+  width:140px;
+  text-decoration:none;
+  text-align:center;
+}
+.cartbutton:hover{text-decoration: none; color:#2e9ad0;}
+.cartbutton:active {
+  position:relative;
+  top:1px;
+}
+
