@@ -7,6 +7,20 @@ class Admin::StaticsController < ApplicationController
     @sections = Section.where(page_id: page.id).to_a
   end
 
+  def update_home
+    sections = params[:section]
+    sections.each do |x|
+      section = Section.find(x[0].to_i)
+      section.update!(x[1])
+    end
+    flash[:success] = "Se actualizó satisfactoriamente!"
+    redirect_to admin_edit_home_path
+  rescue => e
+    puts e.message
+    flash[:danger] = "No se pudo actualizar las secciones"
+    redirect_to admin_edit_home_path
+  end
+
   def edit_about_us
     page = Page.find_by_name("about_us")
     @sections = Section.where(page_id: page.id).to_a

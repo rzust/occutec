@@ -7,7 +7,7 @@ Ocutec::Application.routes.draw do
   get 'about_us'    => 'statics#about_us'
   get 'promotions'  => 'statics#promotions'
   # get 'events'    => 'statics#events'
-  get 'magazine'    => 'statics#magazine'
+  # get 'magazine'    => 'statics#magazine'
   get 'contact_us'  => 'statics#contact_us'
   
   get 'materials'  => 'statics#materials'
@@ -28,6 +28,7 @@ Ocutec::Application.routes.draw do
 
     get  'dashboard'                    => 'dashboard#index'
     get  'edit_home'                    => 'statics#edit_home'
+    post 'update_home'                  => 'statics#update_home'
     get  'edit_about_us'                => 'statics#edit_about_us'
     get  'edit_promotion'               => 'statics#edit_promotion'
     get  'edit_events'                  => 'statics#edit_events_us'
@@ -91,47 +92,5 @@ Ocutec::Application.routes.draw do
     resources :access_requests
     resources :categories
   end
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  get '*_page' => 'statics#materials_page'
+  #get "*path" => 'home#show'
 end

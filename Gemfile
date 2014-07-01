@@ -61,5 +61,6 @@ gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
 
+gem 'mysql2', group: :production
 
 ruby "2.0.0"

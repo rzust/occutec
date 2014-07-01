@@ -31,18 +31,7 @@
 
       .top
         .container
-          %ul.loginbar.pull-right
-            %li            
-              - if current_user.nil? 
-                %li
-                  = link_to "Iniciar Sesión", new_user_session_path 
-              - else
-                %li
-                  = link_to "Cuenta", admin_dashboard_path
-                %li
-                  ||
-                %li
-                  = link_to "Salir", destroy_user_session_path
+
 
       .header.margin-bottom-20
         .navbar.navbar-default{:role => 'navigation'}
@@ -89,10 +78,7 @@
                     Promociones                  
                 %li.events
                   %a{href: events_path, data: {"data-close-others" => "false"}}
-                    Eventos                  
-                %li#magazine
-                  %a{href: magazine_path, data: {"data-close-others" => "false"}}
-                    Revista Online                  
+                    Eventos                                  
                 %li.contact_us
                   %a{href: contact_us_path, data: {"data-close-others" => "false"}}
                     Contáctenos
@@ -103,8 +89,9 @@
           = yield 
 
 
-    .copyright{style: "margin-top: 100px;"}
-      = render "shared/copyright"
+    = #render "shared/footer"
+    = render "shared/copyright"
+/ .copyright{style: "margin-top: 100px;"}      
       
 :javascript
 
