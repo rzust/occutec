@@ -20,7 +20,7 @@
     .box.bordered-box.blue-border
       .box-header.blue-background
         .title
-          Solicitudes
+          Nuevas Solicitudes
       .box-content.box-no-padding
         .responsive-table
           .scrollable-area
@@ -38,6 +38,8 @@
                   %th
                     Teléfono alt.
                   %th
+                    Estado
+                  %th
                     Acciones
               %tbody
                 - access_requests.each do |x|
@@ -47,6 +49,50 @@
                     %td= x.contact
                     %td= x.phone_1
                     %td= x.phone_2
+                    %td= x.state
                     %td
-                      = #link_to "Show", admin_user_path(x),      :class => "btn btn-info btn-xs"
+                      = link_to "Show", admin_access_request_path(x), :class => "btn btn-primary btn-xs"
+                      = link_to "Accept", accept_admin_access_request_path(x), :class => "btn btn-success btn-xs"
+                      = link_to "Reject", reject_admin_access_request_path(x), :class => "btn btn-danger btn-xs"
+                      
+%hr.hr-normal
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Histórico de Solicitudes
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped{style: 'margin-bottom:0;'}
+              %thead  
+                %tr
+                  %th
+                    Empresa
+                  %th
+                    RUC
+                  %th
+                    Contacto
+                  %th
+                    Teléfono
+                  %th
+                    Teléfono alt.
+                  %th
+                    Estado
+                  %th
+                    Acciones
+              %tbody
+                - access_requests_all.each do |x|
+                  %tr{id: x.id}
+                    %td= x.company
+                    %td= x.legal_code
+                    %td= x.contact
+                    %td= x.phone_1
+                    %td= x.phone_2
+                    %td= x.state
+                    %td
+                      = link_to "Show", admin_access_request_path(x), :class => "btn btn-primary btn-xs"
+
                       

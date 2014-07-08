@@ -21,13 +21,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    password = (0...8).map { (65 + rand(26)).chr }.join
-    @user = User.new(params[:user].permit(:first_name, :last_name, :email, :phone, :address, :is_admin, :company))
-    @user.update(password: password)
+    
+    @user = User.new(params[:user].permit(:first_name, :last_name, :email, :phone, :address, :is_admin, :company, :password, :password_confirmation))
  
     respond_to do |format|
       if @user.save
-        UserMailer.welcome_email(@user, password).deliver
         if @user.is_admin
           format.html { redirect_to(administrators_admin_users_path, notice: 'Se guardó satisfactoriamente.') }
         else

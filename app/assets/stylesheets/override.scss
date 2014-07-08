@@ -123,8 +123,8 @@ div.cycle-slide.cycle-sentinel{
 
 .copyright{
   padding: 7px 0 7px;
-  // background-color: #383838;
-  background: url(nav-bg.png) repeat-x;
+  
+  background: #252525 url(nav-bg.png) repeat-x;
   .copyright-space{
     margin-bottom: 5px;
     margin-top: 5px;
@@ -306,6 +306,12 @@ img.fill{
   cursor: pointer;
 }
 
+@media only screen and (min-device-width: 767px) and (max-width: 991px){
+  .header .navbar-default .navbar-nav > li > a{
+    font-size: 14px;
+  }
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px), (max-width: 767px) {
   // .banner h1, .banner h2 {
   //   font-size: 24px;
@@ -427,4 +433,10 @@ img.grayscale {
       }
     }
   }
+}
+
+.img-border{
+  -webkit-box-shadow: #ddd 0 0 5px;
+  -moz-box-shadow: 0 0 5px #ddd;  
+  box-shadow: 0 0 5px #ddd;
 }

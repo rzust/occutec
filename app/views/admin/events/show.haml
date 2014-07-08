@@ -1,0 +1,46 @@
+
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-calendar
+        %span
+          Evento
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-search
+          = event.name
+      .box-content.box-double-padding
+        = form_for [:admin, event], :html => {:class => "form", :multipart => true} do |f|
+          
+          %fieldset
+            .row
+              .col-sm-2
+              .col-sm-8
+                .form-group
+                  = f.label "Nombre"
+                  = f.text_field :name, :class => "form-control", disabled: true
+                .form-group
+                  = f.label "Descripción"
+                  = text_area_tag("event[description]", event.description.html_safe, rows: '10', :class => "form-control", id: "body", disabled: true)
+                .form-group
+                  = f.label "Fecha"
+                  .input-group.datepicker#datepicker
+                    = f.text_field :date, :class => "form-control", "data-format" => "yyyy-MM-dd", placeholder: 'Seleccionar Fecha', disabled: true
+                    %span.input-group-addon
+                      %span.icon-calendar{"data-date-icon" => 'icon-calendar', "data-time-icon" => 'icon-time'}
+          
+       
+
+
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-1
+                = link_to "Regresar", :back, :class => "btn btn-primary btn-sm"
+                = link_to "Edit", edit_admin_event_path(event),  :class => "btn btn-warning btn-sm"
+
+  

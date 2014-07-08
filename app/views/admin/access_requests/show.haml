@@ -1,0 +1,75 @@
+.row
+  .col-sm-12
+    .page-header
+      %h1.pull-left
+        %i.icon-edit
+        %span
+          Solicitud:
+      .pull-right
+        %ul.breadcrumb
+          %li
+            %a{href: admin_dashboard_path}
+              %i.icon-bar-chart
+          %li.separator
+            %i.icon-angle-right
+          %li
+            %a{href: admin_access_requests_path}
+              Solicitud
+          %li.separator
+            %i.icon-angle-right
+          %li.active
+            Solicitud  
+
+.row
+  .col-sm-12
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          %i.icon-user
+          Solicitud
+      .box-content.box-double-padding
+        %form.form
+          .form-group
+            %label
+              Empresa
+            = text_field_tag(:company, access_request.company, {disabled: true, :class => "form-control", :placeholder => "Razón Social"})
+              
+
+          .form-group
+            %label
+              RUC
+            = text_field_tag(:legal_code, access_request.legal_code, {disabled: true, :class => "form-control", :placeholder => "RUC de la empresa"})
+
+          %hr.hr-normal
+          .form-group
+            %label
+              Nombre de contacto
+            = text_field_tag(:contact, access_request.contact, {disabled: true, :class => "form-control", :placeholder => "Nombre y Apellido"})
+          
+          .form-group
+            %label
+              Teléfono
+            = text_field_tag(:phone_1, access_request.phone_1, {disabled: true, :class => "form-control", :placeholder => "Teléfono Principal"})
+                  
+          .form-group
+            %label
+              Teléfono Alt.
+            = text_field_tag(:phone_2, access_request.phone_2, {disabled: true, :class => "form-control", :placeholder => "Teléfono Secundario"})
+          
+          .form-group
+            %label
+              Comentario
+            = text_area_tag(:comment, access_request.comment, {disabled: true, :class => "form-control", :placeholder => "Si desea, deje un comentario"})        
+          
+
+
+          .form-actions
+            .row 
+              .col-sm-7.col-sm-offset-1
+                = link_to "Regresar", :back, :class => "btn btn-primary btn-sm"
+                  
+
+
+          
+
+     
