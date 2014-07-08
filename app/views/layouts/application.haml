@@ -25,77 +25,78 @@
 
 
   %body
-    .container
-      
-      = link_to 'PedidosWeb', 'http://pedidoweb.ocutec.com.pe/Login.aspx?compania=3', class: 'cartbutton glyphicon glyphicon-shopping-cart'
-          
-      =#image_tag "bg.jpg", class: 'overlay-image'
-      .overlay
-
-      .top
-        .container
-
-
-      .header.margin-bottom-20
-        .navbar.navbar-default{:role => 'navigation'}
-          .container
-            .navbar-header
-              %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
-                %span.sr-only
-                  Toggle navigation
-                %span.icon-bar                      
-                %span.icon-bar                      
-                %span.icon-bar                                    
-              %a.navbar-brand{href: root_path}
-                =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
-            .collapse.navbar-collapse.navbar-responsive-collapse
-              %ul.nav.navbar-nav.navbar-right
-                %li.about_us
-                  %a{href: about_us_path, data: {"data-close-others" => "false"}}
-                    La Empresa                  
-                %li.dropdown.technology.treatments.milling.futurex.materials.type_of_glasses
-                  %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
-                    Linea de Productos
-                    %i.icon-angle-down
-                  %ul.dropdown-menu
-                    %li.technology
-                      %a{href: technology_path}
-                        Tecnología Digital
-                    %li.treatments
-                      %a{href: treatments_path}
-                        Tratamientos
-                    %li.milling
-                      %a{href: milling_path}
-                        Tallado Convencional
-                    %li.futurex
-                      %a{href: futurex_path}
-                        Lentes Future X
-                    %li.materials
-                      %a{href: materials_path}
-                        Materiales 
-                    %li.type_of_glasses
-                      %a{href: type_of_glasses_path}
-                        Tipos de Lentes 
-                %li.promotions
-                  %a{href: promotions_path, data: {"data-close-others" => "false"}}
-                    Promociones                  
-                %li.events
-                  %a{href: events_path, data: {"data-close-others" => "false"}}
-                    Eventos                                  
-                %li.contact_us
-                  %a{href: contact_us_path, data: {"data-close-others" => "false"}}
-                    Contáctenos
+    #wrap
       .container
-  
-        .wrap
 
-          = yield 
+        .top.margin-bottom-10
+        .header.margin-bottom-20
+          .navbar.navbar-default{:role => 'navigation'}
+            .container
+              .navbar-header
+                %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+                  %span.sr-only
+                    Toggle navigation
+                  %span.icon-bar                      
+                  %span.icon-bar                      
+                  %span.icon-bar                                    
+                %a.navbar-brand{href: root_path}
+                  =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
+              .collapse.navbar-collapse.navbar-responsive-collapse
+                %ul.nav.navbar-nav.navbar-right
+                  %li.index
+                    %a{href: root_path, data: {"data-close-others" => "false"}}
+                      %i.icon-home
+                      Inicio
+                  %li.about_us
+                    %a{href: about_us_path, data: {"data-close-others" => "false"}}
+                      La Empresa                  
+                  %li.dropdown.technology.treatments.milling.futurex.materials.type_of_glasses
+                    %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
+                      Linea de Productos
+                      %i.icon-angle-down
+                    %ul.dropdown-menu
+                      %li.technology
+                        %a{href: technology_path}
+                          Tecnología Digital
+                      %li.treatments
+                        %a{href: treatments_path}
+                          Tratamientos
+                      %li.milling
+                        %a{href: milling_path}
+                          Tallado Convencional
+                      %li.futurex
+                        %a{href: futurex_path}
+                          Lentes Future X
+                      %li.materials
+                        %a{href: materials_path}
+                          Materiales 
+                      %li.type_of_glasses
+                        %a{href: type_of_glasses_path}
+                          Tipos de Lentes 
+                  - if promotions?
+                    %li.promotions
+                      %a{href: promotions_path, data: {"data-close-others" => "false"}}
+                        Promociones                  
+                  %li.events
+                    %a{href: events_path, data: {"data-close-others" => "false"}}
+                      Eventos                                  
+                  %li.contact_us
+                    %a{href: contact_us_path, data: {"data-close-others" => "false"}}
+                      Contáctenos                                 
+                  %li
+                    %a{href: 'http://pedidoweb.ocutec.com.pe/Login.aspx?compania=3', data: {"data-close-others" => "false"}}
+                      Pedidos
+                      %i.icon-shopping-cart
+        .container
+    
+          .wrap
 
+            = yield 
 
-    = #render "shared/footer"
-    = render "shared/copyright"
-/ .copyright{style: "margin-top: 100px;"}      
-      
+      #push
+      = #render "shared/footer"
+    = render "shared/copyright"   
+        
 :javascript
 
   $(".#{action_name}").each(function(index){

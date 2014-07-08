@@ -1,11 +1,18 @@
 User.create!(email: "admin@admin.com", password: "adminpass", is_admin: true)
 
 #Create Pages
-Page.create!(name: "home")
+page = Page.create!(name: "home")
+page.sections.create!(name: "Home", title: "Texto 1", body: "text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text texto", has_title: true)
+page.sections.create!(name: "Home", title: "Texto 2", body: "text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text texto", has_title: true)
+page.sections.create!(name: "Home", title: "Texto 3", body: "text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text texto", has_title: true)
+
+
 page = Page.create!(name: "about_us")
 page.sections.create!(name: "About", title: "title", body: "body", has_image: true)
+
 page = Page.create!(name: "promotions")
 page.create_gallery!
+
 Page.create!(name: "events")
 Page.create!(name: "contact_us")
 

@@ -9,7 +9,7 @@
           %i.icon-home
 
       %li 
-        = link_to "Línea de Productos", root_path
+        Línea de Productos
           
       %li.active
         Future X
@@ -36,7 +36,7 @@
     .search-blocks.search-blocks-top-sea.margin-bottom-20
       .row
         .col-md-4.search-img
-          %a{href: "#"}
+          %a{href: product_path(x)}
             = image_tag x.logo_url(:logo), :class => "img-responsive" if x.logo
         .col-md-8
           %h2

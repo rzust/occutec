@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20140424021146) do
     t.text     "body"
     t.string   "image"
     t.string   "image_size"
-    t.boolean  "has_title"
-    t.boolean  "has_image"
+    t.boolean  "has_title",  default: false
+    t.boolean  "has_image",  default: false
     t.integer  "page_id"
     t.integer  "product_id"
     t.datetime "created_at"
