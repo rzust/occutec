@@ -155,6 +155,16 @@ var App = function () {
             prevEffect: 'none',
             nextEffect: 'none',
             closeBtn: true,
+            beforeShow: function () {
+                /* Disable right click */
+                $.fancybox.wrap.bind("contextmenu", function (e) {
+                return false;
+                });
+                /* Disable drag */
+                $.fancybox.wrap.bind("dragstart", function (e) {
+                return false;
+                });
+            },
             helpers: {
                 title: {
                     type: 'inside'

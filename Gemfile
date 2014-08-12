@@ -49,10 +49,12 @@ gem 'quiet_assets', '~> 1.0.2'
 gem 'unicorn'
 
 group :development do
-  gem 'mysql2'
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rvm'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
@@ -61,6 +63,6 @@ gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
 
-gem 'mysql2', group: :production
+gem 'mysql2'
 
 ruby "2.0.0"

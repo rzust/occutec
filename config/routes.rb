@@ -89,7 +89,14 @@ Ocutec::Application.routes.draw do
         get 'customers'
       end
     end
-    resources :access_requests
+    
+    resources :access_requests do
+      member do
+        get 'accept'
+        get 'reject'
+      end
+    end
+
     resources :categories
   end
   #get "*path" => 'home#show'

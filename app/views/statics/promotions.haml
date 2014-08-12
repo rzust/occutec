@@ -6,9 +6,17 @@
 
 .row.margin-bottom-40
   .col-md-12
-    #slide-wrapper
-      #banner
-        - @gallery_images.each do |x|
-          .oneByOne_item
-            =image_tag x.image_url(:slider)
+    - if !@gallery_images.empty?
+      #slide-wrapper
+        #banner
+          - @gallery_images.each do |x|
+            .oneByOne_item
+              =image_tag x.image_url(:slider)
+    - else
+      .purchase
+        .container
+          .row
+            .col-md-12
+              %p
+                No hay promociones en este momento.
   .clear.margin-bottom-40

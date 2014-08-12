@@ -38,5 +38,6 @@
                     %td= x.created_at
                     %td= x.updated_at
                     %td
-                      %a{href: edit_admin_product_path(x), :class => "btn btn-xs"}
-                        %i.icon-edit
+                      = link_to "Edit", edit_admin_product_path(x),  :class => "btn btn-warning btn-xs"
+                      = link_to "Delete", admin_product_path(x), method: :delete, :class => "btn btn-danger btn-xs", remote: true
+                    

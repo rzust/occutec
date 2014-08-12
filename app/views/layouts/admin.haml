@@ -40,7 +40,15 @@
              
 
 
-
+:javascript
+  $(document).ready(function(){
+    $(".bootstrap-wysihtml5-insert-image-modal").each(function(){
+      $(this).closest("li").hide();
+    });
+    $(".bootstrap-wysihtml5-insert-link-modal").each(function(){
+      $(this).closest("li").hide();
+    });
+  });
 
 
 

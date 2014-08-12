@@ -3,7 +3,7 @@
   .col-sm-12
     .page-header
       %h1.pull-left
-        %i.icon-edit
+        %i.icon-calendar
         %span
           Evento
 
@@ -12,8 +12,8 @@
     .box.bordered-box.blue-border
       .box-header.blue-background
         .title
-          %i.icon-plus
-          Evento
+          %i.icon-edit
+          = event.name
       .box-content.box-double-padding
         = form_for [:admin, event], :html => {:class => "form", :multipart => true} do |f|
           
@@ -40,6 +40,7 @@
           .form-actions
             .row 
               .col-sm-7.col-sm-offset-5
-                = f.submit "Guardar", :class => "btn btn-primary btn-lg"
+                = link_to "Regresar", :back, :class => "btn btn-primary btn-sm"
+                = f.submit "Guardar", :class => "btn btn-primary btn-sm"
 
   

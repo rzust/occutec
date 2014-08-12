@@ -42,7 +42,13 @@
                   = f.text_field :company, :class => "form-control", :type => "text"
               .form-group
                 = f.label :email, "E-mail"
-                = f.text_field :email, :class => "form-control", :type => "text"
+                = f.text_field :email, :class => "form-control", :type => "text", required: true
+              .form-group
+                = f.label :password, "Contraseña"
+                = f.password_field :password, :class => "form-control", required: true
+              .form-group
+                = f.label :password_confirmation, "Confirmar Contraseña"
+                = f.password_field :password_confirmation, :class => "form-control", required: true
               .form-group
                 = f.label :first_name, "Nombre"
                 = f.text_field :first_name, :class => "form-control", :type => "text"
@@ -60,8 +66,9 @@
                     Calle XX, (dpto/ofi XX), Distrito, Provincia
           .form-actions
             .row 
-              .col-sm-7.col-sm-offset-5
-                = f.submit "Guardar", :class => "btn btn-primary btn-lg"
+              .col-sm-7.col-sm-offset-1
+                = link_to "Regresar", :back, :class => "btn btn-primary btn-sm"
+                = f.submit "Guardar", :class => "btn btn-primary btn-sm"
                   
 
 
