@@ -8,14 +8,14 @@
 %html
   %head
 
-    %title Ocutec 
+    %title Ocutec
 
 
-    %meta{:charset => "utf-8"} 
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"} 
-    %meta{:content => "", :name => "description"} 
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
-    = favicon_link_tag 
+    = favicon_link_tag
     = stylesheet_link_tag    "application", media: "all"
     %script
       var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
@@ -36,107 +36,103 @@
                 %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
                   %span.sr-only
                     Toggle navigation
-                  %span.icon-bar                      
-                  %span.icon-bar                      
-                  %span.icon-bar                                    
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
                 %a.navbar-brand{href: root_path}
                   =image_tag("ocutec.jpg", id: "logo-header", alt: "Logo")
               .collapse.navbar-collapse.navbar-responsive-collapse
                 %ul.nav.navbar-nav.navbar-right
-                  %li.index
+                  %li.statics_index
                     %a{href: root_path, data: {"data-close-others" => "false"}}
                       %i.icon-home
                       Inicio
-                  %li.about_us
+                  %li.statics_about_us
                     %a{href: about_us_path, data: {"data-close-others" => "false"}}
-                      La Empresa                  
-                  %li.dropdown.technology.treatments.milling.futurex.materials.type_of_glasses
+                      La Empresa
+                  %li.dropdown.statics_technology.statics_treatments.statics_milling.statics_futurex.statics_materials.statics_type_of_glasses
                     %a.dropdown-toggle{href: "#", data: {toggle: "dropdown", hover: "dropdown", delay: "0", "close-others" => "false"}}
                       Linea de Productos
                       %i.icon-angle-down
                     %ul.dropdown-menu
-                      %li.technology
+                      %li.statics_technology
                         %a{href: technology_path}
                           Tecnología Digital
-                      %li.treatments
+                      %li.statics_treatments
                         %a{href: treatments_path}
                           Tratamientos
-                      %li.milling
+                      %li.statics_milling
                         %a{href: milling_path}
                           Tallado Convencional
-                      %li.futurex
+                      %li.statics_futurex
                         %a{href: futurex_path}
                           Lentes Future X
-                      %li.materials
+                      %li.statics_materials
                         %a{href: materials_path}
-                          Materiales 
-                      %li.type_of_glasses
+                          Materiales
+                      %li.statics_type_of_glasses
                         %a{href: type_of_glasses_path}
-                          Tipos de Lentes 
+                          Tipos de Lentes
                   - if promotions?
-                    %li.promotions
+                    %li.statics_promotions
                       %a{href: promotions_path, data: {"data-close-others" => "false"}}
-                        Promociones                  
-                  %li.events
+                        Promociones
+                  %li.events_index
                     %a{href: events_path, data: {"data-close-others" => "false"}}
-                      Eventos                                  
-                  %li.contact_us
+                      Eventos
+                  %li.statics_contact_us
                     %a{href: contact_us_path, data: {"data-close-others" => "false"}}
-                      Contáctenos                                 
+                      Contáctenos
                   %li
                     %a{href: 'http://pedidoweb.ocutec.com.pe/Login.aspx?compania=3', data: {"data-close-others" => "false"}}
                       Pedidos
                       %i.icon-shopping-cart
         .container
-    
+
           .wrap
 
-            = yield 
+            = yield
 
       #push
       = #render "shared/footer"
-    = render "shared/copyright"   
-        
+    = render "shared/copyright"
+
 :javascript
 
-  $(".#{action_name}").each(function(index){
+  $(".#{controller_name}_#{action_name}").each(function(index){
     $(this).addClass("active");
   });
 
-  var action = "#{action_name}";
-  
-  if(action=="magazine"){
-    $("#magazine").addClass("active");
-  }
-   
+  var action = "#{controller_name}_#{action_name}";
+
   jQuery(document).ready(function() {
     App.init();
     // App.initSliders();
 
 
-    $("#banner").oneByOne({                          // the wrapper's name 
-      className: 'oneByOne1',                             // the wrapper div's class name of each slider  
-      /* Please provide the width and height in the responsive 
-      version, for the slider will keep the ratio when resize 
+    $("#banner").oneByOne({                          // the wrapper's name
+      className: 'oneByOne1',                             // the wrapper div's class name of each slider
+      /* Please provide the width and height in the responsive
+      version, for the slider will keep the ratio when resize
       depends on these size. */
-      pauseByHover: true,                         // pause the auto delay slideshow when user hover   
-      width: 940,                             // width of the slider    
-      height: 341,                            // height of the slider   
+      pauseByHover: true,                         // pause the auto delay slideshow when user hover
+      width: 940,                             // width of the slider
+      height: 341,                            // height of the slider
       easeType: 'random',                         // will override effect if you don't pre-defined it in the element
-      delay: 300,                             // the delay of the touch/drag tween  
+      delay: 300,                             // the delay of the touch/drag tween
       tolerance: 0.25,                          // the tolerance of the touch/drag
-      slideShow: true,                          // auto play the slider or not    
-      slideShowDelay: 3000,                       // the delay millisecond of the slidershow  
+      slideShow: true,                          // auto play the slider or not
+      slideShowDelay: 3000,                       // the delay millisecond of the slidershow
       responsive: true,                         // slider's size with the media query in CSS
       minWidth: 480                           // text is hidden at this width
-    });  
+    });
 
 
 
     window.setTimeout(function() {
-      
+
       $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
-        $(this).remove(); 
+        $(this).remove();
       });
 
     }, 3000);

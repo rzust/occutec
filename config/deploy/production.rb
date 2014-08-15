@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 # set :password, ask('Server Password', nil)
-server '192.168.2.133', user: 'deploy', roles: %w{web app db}
+server '104.131.200.119', user: 'deploy', roles: %w{web app db}
 
 set :unicorn_worker_count, 4
 set :enable_ssl, false

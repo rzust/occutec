@@ -10,3 +10,6 @@
 //= require admin/plugins/plugins
 //= require admin/theme
 //= require admin/statics
+//= require jquery.validate.min
+//= require additional-methods.min
+//= require jquery_validate_spanish

@@ -8,7 +8,7 @@
             Agregar Administrador
         - else
           %span
-            Agregar Usuario 
+            Agregar Usuario
       .pull-right
         %ul.breadcrumb
           %li
@@ -21,7 +21,7 @@
           %li.separator
             %i.icon-angle-right
           %li.active
-            Agregar  
+            Agregar
 
 .row
   .col-sm-12
@@ -31,7 +31,7 @@
           %i.icon-user
           = @user.is_admin ? "Administrador" : "Usuario"
       .box-content.box-double-padding
-        = form_for [:admin, @user], :html => {:class => "form"} do |f|
+        = form_for [:admin, @user], :html => {:class => "form new_user"} do |f|
           = f.hidden_field :is_admin, :value => @user.is_admin
           %fieldset
             .col-sm-4
@@ -42,7 +42,7 @@
                   = f.text_field :company, :class => "form-control", :type => "text"
               .form-group
                 = f.label :email, "E-mail"
-                = f.text_field :email, :class => "form-control", :type => "text", required: true
+                = f.text_field :email, :class => "form-control", :type => "email", required: true
               .form-group
                 = f.label :password, "Contraseña"
                 = f.password_field :password, :class => "form-control", required: true
@@ -51,10 +51,10 @@
                 = f.password_field :password_confirmation, :class => "form-control", required: true
               .form-group
                 = f.label :first_name, "Nombre"
-                = f.text_field :first_name, :class => "form-control", :type => "text"
+                = f.text_field :first_name, :class => "form-control", :type => "text", required: true
               .form-group
                 = f.label :last_name, "Apellido"
-                = f.text_field :last_name, :class => "form-control", :type => "text"
+                = f.text_field :last_name, :class => "form-control", :type => "text", required: true
               .form-group
                 = f.label :phone, "Teléfono"
                 = f.text_field :phone, :class => "form-control", :type => "text"
@@ -65,13 +65,23 @@
                   %small.text-muted
                     Calle XX, (dpto/ofi XX), Distrito, Provincia
           .form-actions
-            .row 
+            .row
               .col-sm-7.col-sm-offset-1
                 = link_to "Regresar", :back, :class => "btn btn-primary btn-sm"
                 = f.submit "Guardar", :class => "btn btn-primary btn-sm"
-                  
+
+:javascript
+  $( ".new_user" ).validate({
+    rules: {
+      "user[email]": "required",
+      "user_password": "required",
+      "user[password_confirmation]": {
+        equalTo: "#user_password"
+      },
+      "user[first_name]": "required",
+      "user[last_name]": "required"
+    }
+  });
 
 
-          
 
-     

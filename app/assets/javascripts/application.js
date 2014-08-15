@@ -23,7 +23,9 @@
 //= require slider/jquery.onebyone.min
 //= require slider/jquery.touchwipe.min
 //= require fancybox/source/jquery.fancybox.js
-
+//= require jquery.validate.min
+//= require additional-methods.min
+//= require jquery_validate_spanish
 //= require unslider.min
 //= require app
 //= require gmap/gmap
