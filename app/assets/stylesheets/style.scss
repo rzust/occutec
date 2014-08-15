@@ -49,6 +49,7 @@
 }
 .purchase p {
 	margin-bottom: 0;
+  word-wrap: break-word;
 }
 .purchase span {
 	color: #666;
@@ -341,8 +342,13 @@ blockquote:hover {
 	color: #a8f85f;
 }
 
-/*Page (Features)
-------------------------------------*/
+/*Page (Features)*/
+
+.search-blocks p{
+  word-wrap: break-word;
+}
+
+
 /*Thumbnail*/
 a.thumbnail {
 	padding: 0;

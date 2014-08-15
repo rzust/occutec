@@ -3,7 +3,7 @@ development:
   encoding: utf8
   database: ocutec2_development
   username: root
-  password: razm
+  password: chimpance99
   host: localhost
 
 production:
