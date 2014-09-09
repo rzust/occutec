@@ -4,13 +4,13 @@
       = @category.name.html_safe rescue ""
     %ul.pull-right.breadcrumb
       %li
-        
+
         %a{href: root_path}
           %i.icon-home
 
-      %li 
+      %li
         Línea de Productos
-          
+
       %li.active
         Tecnología Digital
 
@@ -24,13 +24,14 @@
 / .oneByOne_item
 / =image_tag "slider2.jpg"
 
-.purchase
-  .container
-    .row
-      .col-md-12
-        %p
-          = @category.description.html_safe rescue ""
-
+- if !@category.description.nil?
+  .purchase
+    .container
+      .row
+        .col-md-12
+          %p
+            = @category.description.html_safe rescue ""
+%br
 .container
   - products(1).each do |x|
     .search-blocks.search-blocks-top-sea.margin-bottom-20

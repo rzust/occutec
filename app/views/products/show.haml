@@ -4,13 +4,13 @@
       Tecnología Digital
     %ul.pull-right.breadcrumb
       %li
-        
+
         %a{href: root_path}
           %i.icon-home
 
-      %li 
+      %li
         Línea de Productos
-          
+
       %li.active
         Tecnología Digital
 
@@ -29,14 +29,15 @@
       .col-md-12
         %span
           = product.name.html_safe rescue ""
-        %p
-          = product.description.html_safe rescue ""
+        /
+          %p
+            = product.description.html_safe rescue ""
 
 - product.sections.each do |x|
   .row
     .col-md-2
     .col-md-8
-      .headline  
+      .headline
         %h2
           = x.title.html_safe if !x.title.nil?
   .row.margin-bottom-40
