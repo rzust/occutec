@@ -1,7 +1,7 @@
 .breadcrumbs.margin-bottom-40
   .container
     %h1.pull-left
-      Tecnología Digital
+      = product.category.name rescue ""
     %ul.pull-right.breadcrumb
       %li
 
@@ -12,7 +12,7 @@
         Línea de Productos
 
       %li.active
-        Tecnología Digital
+        = product.category.name rescue ""
 
 .row.margin-bottom-40
   .col-md-12
