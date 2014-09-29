@@ -1,5 +1,5 @@
 production:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: ocutec_production
   username: deploy
