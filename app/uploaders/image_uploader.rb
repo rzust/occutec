@@ -33,7 +33,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :logo do
-    process resize_to_fill: [660, 340]
+    process resize_to_fit: [660, 340]
   end
 
   version :slider do

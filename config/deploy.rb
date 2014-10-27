@@ -10,6 +10,10 @@ set :deploy_to, '/home/deploy/apps/ocutec'
 set :pty, true
 set :deploy_via, :remote_cache
 set :use_sudo, false
+
+set :ssh_options, {
+  port: 24504
+}
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -132,7 +136,7 @@ namespace :deploy do
   #   end
   # end
 
-  # task :setup_config do 
+  # task :setup_config do
 
   # end
   # after 'deploy:setup_config', 'nginx:reload'
