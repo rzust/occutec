@@ -2,9 +2,9 @@ class StaticsController < ApplicationController
 
   def index
     page = Page.find_by_name("home")
-    products = Product.all
+    @products = Product.all
     @slider_images = MainSliderImage.all
-    @images = products.collect{|x| x.logo_url(:small)}
+    # @images = products.collect{|x| x.logo_url(:small)}
     @sections = page.sections
   end
 
@@ -33,7 +33,7 @@ class StaticsController < ApplicationController
   #   uri.query = URI.encode_www_form({:username => "ocutecmagazine", :responseParams => "*", :sortBy => "epoch desc"})
   #   res = Net::HTTP.get_response(uri)
   #   if res.is_a?(Net::HTTPSuccess)
-  #     resp_json = JSON.parse(res.body) 
+  #     resp_json = JSON.parse(res.body)
   #     mags = Array.new
   #     resp_json["response"]["docs"].each do |x|
   #       mags << [x["description"], x["docname"]]

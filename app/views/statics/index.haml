@@ -22,16 +22,16 @@
 
 
 
-- if @images.count > 6
+- if @products.count > 6
   .container
     #clients-flexslider.flexslider.home.clients
       .headline
       %ul.slides
-        - @images.each do |url|
+        - @products.each do |x|
           %li
-            %a
-              =image_tag(url, :class => "grayscale img-responsive", alt: "" )
-              =image_tag(url, :class => "color-img img-responsive", alt: "")
+            %a{href: product_path(x)}
+              =image_tag(x.logo_url(:small), :class => "grayscale img-responsive", alt: "" )
+              =image_tag(x.logo_url(:small), :class => "color-img img-responsive", alt: "")
   %br
 
 
