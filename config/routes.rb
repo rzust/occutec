@@ -1,6 +1,6 @@
 Ocutec::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "admin/sessions" }
-  
+
   root 'statics#index'
 
   # get 'services'    => 'statics#services'
@@ -9,7 +9,7 @@ Ocutec::Application.routes.draw do
   # get 'events'    => 'statics#events'
   # get 'magazine'    => 'statics#magazine'
   get 'contact_us'  => 'statics#contact_us'
-  
+
   get 'materials'  => 'statics#materials'
   get 'technology'  => 'statics#technology'
   get 'treatments'  => 'statics#treatments'
@@ -19,10 +19,10 @@ Ocutec::Application.routes.draw do
 
   resources :products
   resources :messages
-  resources :events do 
+  resources :events do
     resources :event_images
   end
-  
+
   namespace :admin do
     root 'dashboard#index'
 
@@ -33,7 +33,7 @@ Ocutec::Application.routes.draw do
     get  'edit_promotion'               => 'statics#edit_promotion'
     get  'edit_events'                  => 'statics#edit_events_us'
     get  'edit_contact_us'              => 'statics#edit_contact_us'
-    
+
     get  'edit_technology'              => 'statics#edit_technology'
     get  'edit_treatments'              => 'statics#edit_treatments'
     get  'edit_milling'                 => 'statics#edit_milling'
@@ -54,11 +54,11 @@ Ocutec::Application.routes.draw do
 
     resources :messages
     resources :contacts do
-      collection do 
+      collection do
         get 'edit_main'
       end
     end
-    resources :products do 
+    resources :products do
       resources :gallery_images
       collection do
         get 'add_section'
@@ -76,20 +76,20 @@ Ocutec::Application.routes.draw do
 
     resources :events do
       resources :event_images
-      member do 
+      member do
         get 'images_panel'
       end
     end
 
     resources :event_images
-    
+
     resources :users do
       collection do
         get 'administrators'
         get 'customers'
       end
     end
-    
+
     resources :access_requests do
       member do
         get 'accept'
@@ -99,5 +99,5 @@ Ocutec::Application.routes.draw do
 
     resources :categories
   end
-  #get "*path" => 'home#show'
+  get "*path" => 'statics#index'
 end
