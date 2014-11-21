@@ -150,7 +150,7 @@ div.cycle-slide.cycle-sentinel{
   -webkit-box-shadow: #ddd 0 0 5px;
   -moz-box-shadow: 0 0 5px #ddd;
   box-shadow: 0 0 5px #ddd;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .overlay{
@@ -358,7 +358,8 @@ img.grayscale {
 }
 
 .clients li{
-  width: 150px !important;
+width: 100px !important;
+margin-right: 50px;
 }
 
 
