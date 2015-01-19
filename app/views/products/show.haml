@@ -12,7 +12,8 @@
         Línea de Productos
 
       %li.active
-        = product.category.name rescue ""
+        %a{href: (page_path(product.category.name) rescue "")}
+          = product.category.name rescue ""
 
 .row.margin-bottom-40
   .col-md-12

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :promotions?
+  helper_method :promotions?, :page_path
   # unless Rails.application.config.consider_all_requests_local
   #   rescue_from Exception, with: :render_500
   #   rescue_from ActionController::RoutingError, with: :render_404
@@ -34,6 +34,23 @@ class ApplicationController < ActionController::Base
 
   def render_505
     render 'shared/500', :status => 500
+  end
+
+  def page_path(name)
+    case name
+    when 'Tecnología Digital'
+      technology_path
+    when 'Tallado Convencional'
+      milling_path
+    when 'Tratamientos'
+      treatments_path
+    when 'Lentes Future X'
+      futurex_path
+    when 'Materiales'
+      materials_path
+    when 'Tipos de Lentes'
+      type_of_glasses_path
+    end
   end
 
   protected
