@@ -41,6 +41,14 @@ page = Page.create!(name: "type_of_glasses")
 section = page.sections.create!(name: "Description", title: "Tipos de Lentes", body: "body")
 section.create_category(name: "Tipos de Lentes")
 
+page = Page.create!(name: "transitions")
+section = page.sections.create!(name: "Description", title: "Lentes Transitions", body: "body")
+section.create_category(name: "Lentes Transitions")
+
+page = Page.create!(name: "xperio")
+section = page.sections.create!(name: "Description", title: "Lentes Xperio", body: "body")
+section.create_category(name: "Lentes Xperio")
+
 #Create Categories
 
 

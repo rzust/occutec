@@ -16,6 +16,8 @@ Ocutec::Application.routes.draw do
   get 'milling'  => 'statics#milling'
   get 'futurex'  => 'statics#futurex'
   get 'type_of_glasses'  => 'statics#type_of_glasses'
+  get 'transitions'  => 'statics#transitions'
+  get 'xperio'  => 'statics#xperio'
 
   resources :products
   resources :messages

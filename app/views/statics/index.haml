@@ -10,14 +10,32 @@
 
 
 .container
-  - @sections.each do |x|
-    .col-md-4
-      .service
-        .desc
-          %h4.center
-            = x.title.html_safe
-          %p.center
-            = x.body.html_safe
+  .col-md-4
+    .service
+      .desc
+        %h4.center
+          %a{href: "#"}
+            = @sections[0].title.html_safe
+        %p.center
+          = @sections[0].body.html_safe
+
+  .col-md-4
+    .service
+      .desc
+        %h4.center
+          %a{href: "#"}
+            = @sections[1].title.html_safe
+        %p.center
+          = @sections[1].body.html_safe
+
+  .col-md-4
+    .service
+      .desc
+        %h4.center
+          %a{href: futurex_path}
+            = @sections[2].title.html_safe
+        %p.center
+          = @sections[2].body.html_safe
 
 
 

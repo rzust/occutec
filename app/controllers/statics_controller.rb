@@ -88,6 +88,18 @@ class StaticsController < ApplicationController
     @category = @sections.first.category
   end
 
+  def transitions
+    page = Page.find_by_name("transitions")
+    @sections = page.sections
+    @category = @sections.first.category
+  end
+
+  def xperio
+    page = Page.find_by_name("xperio")
+    @sections = page.sections
+    @category = @sections.first.category
+  end
+
   def materials_page
     p params[:_page]
   end
