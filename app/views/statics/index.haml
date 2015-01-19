@@ -28,10 +28,11 @@
       .headline
       %ul.slides
         - @products.each do |x|
-          %li
-            %a{href: product_path(x)}
-              =image_tag(x.logo_url(:small), :class => "grayscale img-responsive", alt: "" )
-              =image_tag(x.logo_url(:small), :class => "color-img img-responsive", alt: "")
+          - if x.logo
+            %li
+              %a{href: product_path(x)}
+                =image_tag(x.logo_url(:small), :class => "grayscale img-responsive", alt: "" )
+                =image_tag(x.logo_url(:small), :class => "color-img img-responsive", alt: "")
   %br
 
 

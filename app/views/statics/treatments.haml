@@ -35,12 +35,12 @@
   - products(3).each do |x|
     .search-blocks.search-blocks-top-sea.margin-bottom-20
       .row
-        .col-md-4.search-img
-          %a{href: product_path(x)}
-            = image_tag x.logo_url(:logo), :class => "img-responsive" if x.logo
         .col-md-8
           %h2
             %a{href: product_path(x)}
               = x.name.html_safe rescue ""
           %p
             = x.description.html_safe rescue ""
+        .col-md-4.search-img
+          %a{href: product_path(x)}
+            = image_tag x.logo_url(:logo), :class => "img-responsive" if x.logo
