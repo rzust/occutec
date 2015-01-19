@@ -46,7 +46,7 @@
       .headline
       %ul.slides
         - @products.each do |x|
-          - if x.logo
+          - if !x.logo.nil?
             %li
               %a{href: product_path(x)}
                 =image_tag(x.logo_url(:small), :class => "grayscale img-responsive", alt: "" )
