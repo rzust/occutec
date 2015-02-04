@@ -11,31 +11,31 @@
 
 .container
   .col-md-4
-    .service
-      .desc
-        %h4.center
-          %a{href: "#"}
+    %a{href: milling _path}
+      .service
+        .desc
+          %h4.center
             = @sections[0].title.html_safe
-        %p.center
-          = @sections[0].body.html_safe
+          %p.center
+            = @sections[0].body.html_safe
 
   .col-md-4
-    .service
-      .desc
-        %h4.center
-          %a{href: "#"}
+    %a{href: transitions_path}
+      .service
+        .desc
+          %h4.center
             = @sections[1].title.html_safe
-        %p.center
-          = @sections[1].body.html_safe
+          %p.center
+            = @sections[1].body.html_safe
 
   .col-md-4
-    .service
-      .desc
-        %h4.center
-          %a{href: futurex_path}
+    %a{href: futurex_path}
+      .service
+        .desc
+          %h4.center
             = @sections[2].title.html_safe
-        %p.center
-          = @sections[2].body.html_safe
+          %p.center
+            = @sections[2].body.html_safe
 
 
 
