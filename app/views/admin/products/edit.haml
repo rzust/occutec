@@ -16,7 +16,7 @@
           Editar Producto
       .box-content.box-double-padding
         = form_for [:admin, @product], :html => {:class => "form", :multipart => true} do |f|
-          
+
           %fieldset
             .row
               .col-sm-2
@@ -29,25 +29,28 @@
                   = text_area_tag("product[description]", @product.description, rows: '10', :class => "form-control wysihtml5", id: "body")
                 .form-group
                   = f.label "Categoría"
-                  = f.select :category_id, @categories.collect{|p| [ p.name, p.id ] }, {}, :class => "form-control select2"             
+                  = f.select :category_id, @categories.collect{|p| [ p.name, p.id ] }, {}, :class => "form-control select2"
             .row
               .col-sm-4
               .col-sm-4
                 .form-group
-                  %label 
+                  %label
                     Logo
-                  .box
-                    .box-content
-                      - if !@product.logo.nil?
+                  - if !@product.logo_url.nil?
+                    %a{href: remove_logo_admin_product_path(@product)}
+                      %i.icon-remove.pull-right.text-danger
+                  - if !@product.logo_url.nil?
+                    .box
+                      .box-content
                         = image_tag @product.logo_url, :class => "img-responsive"
             .row
               .col-sm-4
               .col-sm-4
                 .form-group
-                  = file_field_tag("product[logo]", :class => "col-md-12 form-control") 
+                  = file_field_tag("product[logo]", :class => "col-md-12 form-control")
             .row
               .col-sm-10
-                %h2 
+                %h2
                   Secciones
                 .actions
                   = link_to add_section_admin_products_path(:counter => @counter), remote: true, id: "add_section" do
@@ -61,10 +64,9 @@
 
 
           .form-actions
-            .row 
+            .row
               .col-sm-7.col-sm-offset-5
                 = f.submit "Guardar", :class => "btn btn-primary btn-lg"
 
 
 
-  

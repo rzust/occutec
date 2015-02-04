@@ -67,6 +67,7 @@ Ocutec::Application.routes.draw do
       end
       member do
         get 'images_panel'
+        get 'remove_logo'
       end
     end
     resources :main_slider_images do

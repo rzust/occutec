@@ -18,7 +18,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @category = Category.find(params[:category_id])
-  end  
+  end
 
   def edit
     @product = Product.find(params[:id])
@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
   def create
     product = Product.create(params.require(:product).permit(:name, :logo, :description, :category_id))
     product.create_gallery
-    
+
     if params[:section]
       sections = params[:section]
       sections.each do |x|
@@ -57,7 +57,7 @@ class Admin::ProductsController < ApplicationController
   def update
     product = Product.find(params[:id])
     product.update(params.require(:product).permit(:name, :logo, :description, :category_id))
-    
+
     if params[:section]
       sections = params[:section]
       sections.each do |x|
@@ -72,7 +72,7 @@ class Admin::ProductsController < ApplicationController
         section = product.sections.create(x[1]) unless x[1]["body"].nil? || x[1]["body"] == ""
       end
     end
-    
+
     if product.save
       flash[:success] = "Product successfully updated"
       redirect_to images_panel_admin_product_path(product)
@@ -80,6 +80,13 @@ class Admin::ProductsController < ApplicationController
       flash[:warning] = "An error ocurred"
       render :edit
     end
+  end
+
+  def remove_logo
+    product = Product.find(params[:id])
+    product.remove_logo!
+    product.save
+    redirect_to edit_admin_product_path(product)
   end
 
   def destroy
