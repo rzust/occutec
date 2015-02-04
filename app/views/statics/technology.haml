@@ -37,13 +37,13 @@
     .search-blocks.search-blocks-top-sea.margin-bottom-20
       .row
         - if !x.logo_url(:logo).nil?
-          .col-md-8
+          .col-md-7.col-md-offset-1
             %h2
               %a{href: product_path(x)}
                 = x.name.html_safe rescue ""
             %p
               = x.description.html_safe rescue ""
-          .col-md-4.search-img
+          .col-md-3.search-img
             %a{href: product_path(x)}
               = image_tag x.logo_url(:logo), :class => "img-responsive"
         - else
