@@ -32,10 +32,25 @@
             = @category.description.html_safe rescue ""
 %br
 .container
-  - products(6).each do |x|
-    .search-blocks.search-blocks-top-sea.margin-bottom-20
-      .row
-        .col-md-12
+  .search-blocks.search-blocks-top-sea.margin-bottom-20
+    .row
+      .col-md-8.col-md-offset-2
+        %h2
+          Lentes Monofocales
+        %p
+          Son aquellos que nos permiten ver de lejos o cerca por separado corrigiendo defectos visuales como la miopía, hipermetropía y el astigmatismo y la presbicia.
+        %br
+        %h2
+          Lentes Bifocales
+        %p
+          Son aquellos que nos permiten ver simultáneamente de lejos y cerca.la parte superior sirve para mirar de lejos y el segmento inferior para ver de cerca. produciendo un salto de imagen en cada cambio de mirada.
+        %br
+        %h2
+          Lentes Multifocales Progresivos
+        %p
+          Son la mejor opción para ver mejor a varias distancias. Presentan un diseño de ultima tecnología en el cual podemos mirar de lejos, distancia intermedia y cerca , sin saltos de imagen, obteniendo una visión confortable y     
+          natural.
+        -#
           %h2
             = x.name.html_safe rescue ""
           %p
