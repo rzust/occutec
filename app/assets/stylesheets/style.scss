@@ -85,15 +85,27 @@
 	overflow: hidden; 
 	margin-bottom: 10px;
 	padding: 15px 15px 10px;
+	-webkit-transition: box-shadow 0.5s ease;
+    -moz-transition: box-shadow 0.5s ease;
+    -o-transition: box-shadow 0.5s ease;
+    transition: box-shadow 0.5s ease;
 }
+
+.service .center{
+transition: all 0.8s ease;
+	
+}
+
 .service:hover {
 	background: #fcfcfc;
 	box-shadow: 0 0 5px #ddd;
-    -webkit-transition: box-shadow 0.2s ease-in-out;
-    -moz-transition: box-shadow 0.2s ease-in-out;
-    -o-transition: box-shadow 0.2s ease-in-out;
-    transition: box-shadow 0.2s ease-in-out;
+
+	.center{
+	color: #428bca;	
+	transition: all 0.8s ease;
+	}
 }
+
 .service:hover i {
 	color: #656565;
 }
@@ -102,6 +114,7 @@
 	padding: 0 15px; 
 	overflow: hidden;
 }
+
 .service .desc h4 {
 	font-size: 22px;
 	line-height: 25px;
@@ -118,9 +131,11 @@
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
 }
+
 .service .service-icon.icon-cogs {
 	font-size: 37px;
 }
+
 .service .service-icon.icon-plane {
 	font-size: 43px;
 }

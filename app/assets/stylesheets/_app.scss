@@ -27,11 +27,12 @@ a,
 a:focus, 
 a:hover, 
 a:active {
+   
    outline: 0 !important;
+   text-decoration: none;
 }
 a:hover {
    color: #72c02c;
-   text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5 {
