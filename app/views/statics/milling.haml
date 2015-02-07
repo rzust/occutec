@@ -47,7 +47,6 @@
           - else
             .col-md-7.col-md-offset-1
               %h2
-                
-                  = x.name.html_safe rescue ""
+                = x.name.html_safe rescue ""
               %p
                 = x.description.html_safe rescue ""
