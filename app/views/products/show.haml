@@ -34,22 +34,22 @@
           %p
             = product.description.html_safe rescue ""
 
-- product.sections.each do |x|
-  .row
-    .col-md-2
-    .col-md-8
-      .headline
-        %h2
-          = x.title.html_safe if !x.title.nil?
-  .row.margin-bottom-40
-    .col-md-2
-    -if x.image?
-      .col-md-5
-        %p
-          = x.body.html_safe rescue ""
-      .col-md-3
-        = image_tag x.image_url(:section), :class => "img-responsive"
-    -else
+  - product.sections.each do |x|
+    .row
+      .col-md-2
       .col-md-8
-        %p
-          = x.body.html_safe rescue ""
+        .headline
+          %h2
+            = x.title.html_safe if !x.title.nil?
+    .row.margin-bottom-40
+      .col-md-2
+      -if x.image?
+        .col-md-5
+          %p
+            = x.body.html_safe rescue ""
+        .col-md-3
+          = image_tag x.image_url(:section), :class => "img-responsive"
+      -else
+        .col-md-8
+          %p
+            = x.body.html_safe rescue ""
