@@ -12,7 +12,7 @@
 }
 
 #banner{
-	position: absolute;
+	//position: absolute;
 }
 
 .oneByOne1{
@@ -27,14 +27,18 @@
 }   
 
 #banner .oneByOne_item{
-	position: absolute;
-	width: 96%;
+	//position: absolute;
+	width: 100%;
 	margin: 0px auto;
 	//width: 940px;
 	//height: 420px;  
 	overflow: hidden;  
 	display: none;
 }         
+
+.oneByOne_item img{
+	position: relative;
+}
 
 #exampleline{
 	position: relative;
