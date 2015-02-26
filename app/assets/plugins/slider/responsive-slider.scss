@@ -3,9 +3,11 @@
 	padding: 0;
 }
 
-#slide-wrapper{              
-	width: 940px;
-	margin: 0 auto;
+#slide-wrapper{  
+	width: 96%;     
+	margin-left: auto;
+	margin-right: auto;       
+	//width: 940px;
 	-webkit-user-select: none;	  			
 }
 
@@ -14,8 +16,11 @@
 }
 
 .oneByOne1{
-	width: 940px;
-	height: 420px;   
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+	//width: 940px;
+	//height: 420px;   
 	background: #EFEFEF url(image_path('paven.png')) repeat;    
 	position: relative;
 	overflow: hidden;  	
@@ -23,8 +28,10 @@
 
 #banner .oneByOne_item{
 	position: absolute;
-	width: 940px;
-	height: 420px;  
+	width: 96%;
+	margin: 0px auto;
+	//width: 940px;
+	//height: 420px;  
 	overflow: hidden;  
 	display: none;
 }         
@@ -36,7 +43,7 @@
 
 
 /* change the width of the slider in your own responsive media query */
-@media only screen and (min-width: 960px) {
+/*@media only screen and (min-width: 960px) {
 	.oneByOne1, #banner .oneByOne_item, #slide-wrapper, #exampleline img{
 		width: 940px;
 	}
@@ -57,7 +64,7 @@
 		width: 300px;
 	}
 	
-}
+}*/
                       
 #banner .oneByOne_item span{
 	font-family: helvetica, verdana, arial, sans-serif;

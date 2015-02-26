@@ -45,11 +45,13 @@
     .row.margin-bottom-40
       .col-md-2
       -if x.image?
-        .col-md-5
+        .col-md-5{style: 'margin-bottom: 40px;'}
           %p
             = x.body.html_safe rescue ""
-        .col-md-3
+        }
+        .col-md-3{style: 'margin-left: auto; margin-right: auto;'}
           = image_tag x.image_url(:section), :class => "img-responsive"
+        }
       -else
         .col-md-8
           %p
