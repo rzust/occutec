@@ -41,7 +41,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :main_slider do
-    process resize_to_fill: [1400, 406]
+    process resize_to_fill: [1110, 322]
+    -#/*1400,406*/
   end
 
   version :event do
