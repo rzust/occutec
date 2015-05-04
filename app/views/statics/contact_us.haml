@@ -1,15 +1,10 @@
-
 .breadcrumbs
   .container
     %h1.pull-left
       Contáctenos
-
-
 .margin-bottom-40
   #single_map{style: "width:100%; height:300px;", "data-address"=>"#{@main_contact.address1}", "data-iconrel"=>"assets/pin_es.png", "data-zoom"=>"14"}
-
 .container
-
   .row.margin-bottom-30
     .col-md-9.mb-margin-bottom-30
       .headline
@@ -140,8 +135,6 @@
 
 :javascript
 
-
-  
   var map;                                  // Map Variable for Google Maps API (Property Locations)  
   var office_map;                               // Map Variable for Google Maps API (Office location)    
 
@@ -301,6 +294,3 @@
     $("#map_div").width(($(".google-map-js").width()-2+'px'));
 
   });
-
-
-

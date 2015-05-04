@@ -7,14 +7,11 @@
 
         %a{href: root_path}
           %i.icon-home
-
       %li
         Línea de Productos
-
       %li.active
         %a{href: (page_path(product.category.name) rescue "")}
           = product.category.name rescue ""
-
 .row.margin-bottom-40
   .col-md-12
     #slide-wrapper
@@ -22,8 +19,6 @@
         - product.gallery.gallery_images.each do |x|
           .oneByOne_item
             =image_tag x.image_url(:slider), :class => "img-responsive"
-
-
 .purchase
   .container
     .row

@@ -1,19 +1,4 @@
-/*   
- * Template Name: Unify - Responsive Bootstrap Template
- * Description: Business, Corporate, Portfolio and Blog Theme.
- * Version: 1.3
- * Author: Html Stream
- * Website: http://htmlstream.com/preview/unify
-*/
-
-/*Import app.css*/
 @import "app";
-
-/*Import Google Fonts*/
-@import url(https://fonts.googleapis.com/css?family=Monda:400,700);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-/*Block Headline*/
 .headline {
 	display: block;
 	margin: 10px 0 25px 0;
@@ -1489,3 +1474,6 @@ ul.blog-tags a:hover i {
   top:1px;
 }
 
+
+@import url(https://fonts.googleapis.com/css?family=Monda:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);

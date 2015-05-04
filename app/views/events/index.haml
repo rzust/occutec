@@ -14,7 +14,6 @@
         <div class="row margin-bottom-20">
       - else
         - counter += 1
-
       .col-md-3.col-sm-6
         .thumbnail-style
           %a{title: "#{event.name}", href: event_event_images_path(event)}
@@ -26,9 +25,7 @@
       - if counter == 3 || (i+1) == count
         - counter += 1
         </div>
-
-
-
+        
   %hr.margin-bottom-30
   = will_paginate @events
 :javascript
