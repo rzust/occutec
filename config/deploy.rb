@@ -11,9 +11,9 @@ set :pty, true
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
-set :ssh_options, {
-  port: 24504
-}
+# set :ssh_options, {
+#   port: 24504
+# }
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
