@@ -13,10 +13,6 @@
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     = favicon_link_tag
-    = stylesheet_link_tag    "application", media: "all"
-    %script
-      var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
-    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     #wrap
@@ -92,7 +88,12 @@
 
       #push
       = #render "shared/footer"
-      = javascript_include_tag "https://maps.google.com/maps/api/js"
+    = stylesheet_link_tag    "application", media: "all"
+    %script
+      var back_to_top = '#{image_tag('up.png', width: '51px', height: '42px')}'
+    = javascript_include_tag "application"
+
+    = javascript_include_tag "https://maps.google.com/maps/api/js"
     = render "shared/copyright"
 
 :javascript
