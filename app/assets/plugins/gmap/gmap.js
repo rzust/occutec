@@ -1540,7 +1540,7 @@ if(window.google && window.google.maps){
         options.zoom = 15;
       }
 
-      var sensor = options.hasOwnProperty('sensor') ? !!options.sensor : true;
+      /** var sensor = options.hasOwnProperty('sensor') ? !!options.sensor : true;
       delete options.sensor;
       parameters.push('sensor=' + sensor);
 
@@ -1548,7 +1548,7 @@ if(window.google && window.google.maps){
         if (options.hasOwnProperty(param)){
           parameters.push(param + '=' + options[param]);
         }
-      }
+      } **/
 
       /** Markers **/
       if (markers){

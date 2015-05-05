@@ -11,10 +11,8 @@
     %meta{content: 'width=device-width', 'initial-scale' => 1, 'maximum-scale' => 1, 'user-scalable' => 'no', name: 'viewport'}
     %meta{content: 'text/html;charset=utf-8', 'http-equiv' => 'content-type'}
     = favicon_link_tag
-    = stylesheet_link_tag    "admin/application", media: "all"
-    = javascript_include_tag "admin/application"
+    
     = csrf_meta_tags
-
     /[if lt IE 9]
       = javascript_include_tag "admin/ie/html5shiv.js"
       = javascript_include_tag "admin/ie/respond.min.js"
@@ -37,9 +35,10 @@
                   .col-sm-6.text
                     Copyright © 2014 Ocutec
                   .col-sm-6.buttons
-             
 
-
+    = stylesheet_link_tag    "admin/application", media: "all"
+    = javascript_include_tag "admin/application"
+    
 :javascript
   $(document).ready(function(){
     $(".bootstrap-wysihtml5-insert-image-modal").each(function(){
@@ -49,14 +48,3 @@
       $(this).closest("li").hide();
     });
   });
-
-
-
-              
-
-
-
-
-
-
-       
