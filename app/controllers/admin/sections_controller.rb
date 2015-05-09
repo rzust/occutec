@@ -30,4 +30,12 @@ class Admin::SectionsController < ApplicationController
     redirect_to :back and return
   end
 
+  def delete_image_about
+    section = Section.find(params[:section])
+    section.remove_image!
+    section.image = nil
+    section.save
+    render layout: nil
+  end
+
 end

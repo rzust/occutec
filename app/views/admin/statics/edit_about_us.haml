@@ -57,15 +57,21 @@
                       = text_field_tag("sections[section_#{x.id}][title]", "#{x.title}", :class => "col-md-12 form-control")
                 - if x.has_image?  
                   .form-group
-                    - if !x.image.nil?
-               
-                      .col-sm-3.col-lg-5
-                        .box
-                          .box-content
-                            = image_tag x.image_url, :class => "img-responsive"
-   
-                    .col-md-12
-                      = file_field_tag("sections[section_#{x.id}][image]", :class => "col-md-12 form-control") 
+                    - if !x.image_url.nil?
+                      #image-content.row.margin-bottom-20
+                        .col-md-4
+                        .col-md-4.center
+                          .box.center
+                            .box-content
+                              = image_tag x.image_url, :class => "img-responsive"                      
+                          = link_to admin_delete_image_about_path(section: x.id), method: :delete, :class => "btn btn-danger btn-sm", remote: true do
+                            Eliminar Imagen
+                    .row
+                      .container
+                        .col-md-12
+                          %label{for: "sections[section_#{x.id}][image]"}
+                            Subir imagen
+                          = file_field_tag("sections[section_#{x.id}][image]", :class => "col-md-12 form-control") 
 
 
 

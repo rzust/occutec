@@ -31,11 +31,12 @@ Ocutec::Application.routes.draw do
     get  'dashboard'                    => 'dashboard#index'
     get  'edit_home'                    => 'statics#edit_home'
     post 'update_home'                  => 'statics#update_home'
+    
     get  'edit_about_us'                => 'statics#edit_about_us'
+    
     get  'edit_promotion'               => 'statics#edit_promotion'
     get  'edit_events'                  => 'statics#edit_events_us'
     get  'edit_contact_us'              => 'statics#edit_contact_us'
-
     get  'edit_technology'              => 'statics#edit_technology'
     get  'edit_treatments'              => 'statics#edit_treatments'
     get  'edit_milling'                 => 'statics#edit_milling'
@@ -44,6 +45,7 @@ Ocutec::Application.routes.draw do
     get  'edit_type_of_glasses'         => 'statics#edit_type_of_glasses'
 
     post 'update_sections'              => 'sections#update_sections'
+    delete 'delete_image_about'         => 'sections#delete_image_about'
 
 
     get 'panel/:id' => 'statics#panel'
