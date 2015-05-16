@@ -1,7 +1,0 @@
-development:
-  adapter: mysql2
-  encoding: utf8
-  database: ocutec_development
-  username: root
-  password: razm
-  host: localhost
