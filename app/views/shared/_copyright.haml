@@ -5,8 +5,9 @@
         = image_tag("eye_logo.jpg", class: "logo", alt: "Ocutec", height: "29")
       .col-md-11
         %p.copyright-space
-          2014 &copy; Ocutec SAC. Todos los Derechos Reservados.  
+          = DateTime.now.year
+          &copy; Ocutec SAC. Todos los Derechos Reservados.
           %small
             = "- Todos los demás nombres y marcas son marcas comerciales registradas de sus respectivas compañías"
-      
+
 
